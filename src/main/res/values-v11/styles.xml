@@ -1,0 +1,46 @@
+<resources>
+
+    <!--
+        Base application theme for API 11+. This theme completely replaces
+        AppBaseTheme from res/values/styles.xml on API 11+ devices.
+    -->
+    <style name="AppBaseTheme" parent="android:Theme.Holo.Light">
+        <!-- API 11 theme customizations can go here. -->
+    </style>
+    <style name="CalendarCard">
+
+    </style>
+
+    <style name="CalendarCard.Root">
+        <item name="android:padding">10dp</item>
+    </style>
+
+
+    <style name="CalendarCard.Day">
+        <item name="android:paddingBottom">5dp</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CalendarCard.Days">
+        <item name="android:padding">0dp</item>
+    </style>
+
+    <style name="CalendarCard.Title">
+        <item name="android:padding">5dp</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:gravity">center</item>
+    </style>
+
+    <style name="CalendarCard.Grid">
+        <item name="android:background">@drawable/card_grid_bg</item>
+        <item name="android:paddingRight">1dp</item>
+        <item name="android:paddingBottom">1dp</item>
+    </style>
+
+    <style name="CalendarCard.Cell">
+        <item name="android:background">@drawable/card_item_bg</item>
+        <item name="android:layout_marginLeft">1dp</item>
+        <item name="android:layout_marginTop">1dp</item>
+    </style>
+</resources>

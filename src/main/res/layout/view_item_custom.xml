@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="200dp"
+    android:background="@drawable/selector_global_backgroud"
+    android:orientation="horizontal"
+    android:weightSum="0">
+    <LinearLayout
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="3"
+        android:orientation="vertical">
+        <RelativeLayout
+            android:layout_gravity="center"
+            android:orientation="vertical"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content">
+
+            <CheckBox
+                android:id="@+id/checkbox_check_custom"
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+                android:layout_alignParentLeft="true"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="10dp"
+                android:background="@drawable/selector_img_check_custom"
+                android:button="@null"
+                android:focusable="false"
+                android:checked="false" />
+            <TextView
+                android:layout_toRightOf="@id/checkbox_check_custom"
+                android:id="@+id/textview_info_custom_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:singleLine="true"
+                android:text="张学茵"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <TextView
+                android:layout_marginLeft="5dp"
+                android:layout_toRightOf="@id/checkbox_check_custom"
+                android:layout_below="@id/textview_info_custom_name"
+                android:id="@+id/textview_info_custom_phone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:singleLine="true"
+                android:text="1985145852"
+                android:textColor="#000000"
+                android:textSize="9sp" />
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/textview_info_custom_property_consultant"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+
+        android:singleLine="true"
+        android:text="刘学东"
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+    <TextView
+
+        android:id="@+id/textview_info_custom_type"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+
+        android:singleLine="true"
+        android:text="刘学东"
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+    <TextView
+
+        android:id="@+id/textview_info_custom_last_followup"
+        android:layout_width="10dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_weight="2"
+        android:gravity="center_horizontal"
+
+        android:singleLine="true"
+        android:text="刘学东"
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+
+</LinearLayout>

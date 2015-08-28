@@ -1,0 +1,170 @@
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="fill_parent"
+        android:id="@+id/root_navigation"
+        android:layout_height="wrap_content"
+        android:background="#ffffffff"
+        android:orientation="vertical">
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="3dp"
+        android:background="@drawable/shape_border_bottom_topline"
+        />
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:id="@+id/bottom_menu_layout_home"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_img_home"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/selector_img_bottom_home" />
+
+                <TextView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_text_home"
+                    android:text="首页"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@drawable/selector_text_bottom"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                      
+                    android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bottom_menu_layout_custom"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_img_custom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/selector_img_bottom_custom" />
+
+                <TextView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_text_custom"
+                    android:text="客户"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@drawable/selector_text_bottom"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bottom_menu_layout_table"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_img_table"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/selector_img_bottom_table" />
+
+                <TextView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_text_table"
+                    android:text="报表"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@drawable/selector_text_bottom"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bottom_menu_layout_sale"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_img_sale"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/selector_img_bottom_sale" />
+
+                <TextView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_text_sale"
+
+                    android:text="销控"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@drawable/selector_text_bottom"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:id="@+id/bottom_menu_layout_more"
+            android:layout_width="1px"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:clickable="true"
+            android:focusable="true"
+            android:orientation="vertical">
+
+                <ImageView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_img_more"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:paddingTop="3dp"
+                    android:src="@drawable/selector_img_bottom_more" />
+
+                <TextView
+                    android:duplicateParentState="true"
+                    android:id="@+id/bottom_menu_text_more"
+                    android:text="更多"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@drawable/selector_text_bottom"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:paddingTop="5dp"
+                    android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>

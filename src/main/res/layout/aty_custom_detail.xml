@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        android:background="#302e2e">
+
+        <RelativeLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="21dp">
+
+            <TextView
+                android:id="@+id/textview_custom_name"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="田晓明"
+                android:textColor="#ffffff"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/textview_custom_valid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginLeft="4dp"
+                android:layout_toRightOf="@id/textview_custom_name"
+                android:gravity="center"
+                android:text="[有效]"
+                android:textColor="#31c77f"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/textview_custom_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/textview_custom_name"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="女士"
+                android:textColor="#b3b3b3"
+                android:textSize="15sp" />
+
+            <ImageView
+                android:id="@+id/imageview_custom_detail_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/pic_custom_detail_type_edit_icon" />
+
+            <TextView
+                android:id="@+id/textview_custom_detail_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_below="@id/imageview_custom_detail_type"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="A级"
+                android:textColor="#ffffff"
+                android:textSize="21sp" />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="45dp"
+        android:layout_gravity="center_horizontal"
+        android:background="#545454"
+        android:orientation="horizontal">
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_custom_detail_base"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textview_table_volume"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="基本信息"
+                android:textColor="#eb4a3f"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/view_table_volume"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="#eb4a3f" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:id="@+id/relativelayout_custom_detail_follow"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1">
+
+            <TextView
+                android:id="@+id/textview_table_rate"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:layout_gravity="center_vertical"
+                android:gravity="center"
+                android:text="跟进信息"
+                android:textColor="#eb4a3f"
+                android:textSize="15sp" />
+
+            <View
+                android:id="@+id/view_table_rate"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:layout_alignParentBottom="true"
+                android:background="#eb4a3f" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+    <include layout="@layout/view_layout_custom_detail_base" />
+
+    <include layout="@layout/view_layout_custom_detail_follow" />
+
+</LinearLayout>

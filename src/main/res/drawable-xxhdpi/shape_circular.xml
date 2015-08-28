@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+        android:shape="oval"
+        android:useLevel="false">
+        <solid android:color="@color/titile_tip_color"/>
+        <size android:width="@dimen/title_tip_shape_size"
+             android:height="@dimen/title_tip_shape_size"/>
+</shape>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">新房宝</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+
+    <string name="bottom_navigation_home">首页</string>
+    <string name="bottom_navigation_custom">客户</string>
+    <string name="bottom_navigation_table">报表</string>
+    <string name="bottom_navigation_sale">销控</string>
+    <string name="bottom_navigation_more">更多</string>
+
+    <string name="title_activity_qrcode_scan">QRCodeScanActivity</string>
+
+</resources>

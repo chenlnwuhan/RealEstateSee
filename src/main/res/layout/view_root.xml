@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/activity_root"
+    android:layout_height="match_parent">
+    <ScrollView
+        android:id="@+id/scrollview_body"
+        android:visibility="gone"
+        android:layout_below="@id/root_navigation"
+        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:layout_width="fill_parent"
+        />
+    <LinearLayout
+        android:id="@+id/linearlayout_body"
+        android:layout_above="@id/root_navigation"
+        android:layout_alignParentTop="true"
+        android:layout_height="match_parent"
+        android:background="#ffffff"
+        android:layout_width="fill_parent"
+        />
+    <include layout="@layout/view_layout_bottom_menu"
+        android:layout_alignParentBottom="true"
+        android:layout_height="52dp"
+        android:layout_width="fill_parent"
+    />
+
+
+</RelativeLayout>

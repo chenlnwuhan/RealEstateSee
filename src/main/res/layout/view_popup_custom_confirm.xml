@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_gravity="bottom"
+    android:layout_weight="1"
+    android:orientation="horizontal">
+    <LinearLayout
+        android:id="@+id/linearlayout_custom_confirm"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textview_custom_distribution_cancel"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="取消"
+            android:textColor="#fe5054"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="fill_parent"
+            android:layout_gravity="center_vertical"
+            android:background="#c2c2c2" />
+
+        <TextView
+            android:id="@+id/textview_custom_distribution_ok"
+            android:layout_width="100dp"
+            android:layout_height="45dp"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="确定"
+
+            android:textColor="#fe5054"
+            android:textSize="13sp" />
+    </LinearLayout>
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:layout_above="@id/linearlayout_custom_confirm"
+        android:layout_gravity="center_vertical"
+        android:background="#c2c2c2" />
+
+
+</RelativeLayout>

@@ -1,0 +1,257 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/linnearlayout_custom_add_root"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="7dp"
+    android:layout_marginRight="7dp"
+    android:layout_marginTop="7dp"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:text="客户姓名"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/edittext_custom_name"
+            android:layout_width="160dp"
+            android:layout_height="34dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="28dp"
+            android:singleLine="true"
+            android:maxLength="10"
+            android:gravity="center"
+            android:text="田晓明"
+            android:background="@drawable/shape_edittext_border"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:text="客户电话"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <EditText
+            android:id="@+id/edittext_custom_phone"
+            android:layout_width="160dp"
+            android:inputType="number"
+            android:layout_height="32dp"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="28dp"
+            android:singleLine="true"
+            android:maxLength="16"
+            android:gravity="center"
+            android:text="18974512981"
+            android:background="@drawable/shape_edittext_border"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+            android:text="性别"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:id="@+id/linearlayout_custom_sex"
+            android:layout_width="160dp"
+            android:layout_height="32dp"
+            android:background="#d7d7d7"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="28dp"
+             >
+            <TextView
+                android:id = "@+id/textview_custom_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "女"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:layout_centerInParent="true"
+                />
+            <ImageView
+                android:id = "@+id/image_custom_sex"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity ="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/pic_popup_custom_dropdown"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+
+            android:text="来源"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:id="@+id/linearlayout_custom_type"
+            android:layout_width="160dp"
+            android:layout_height="32dp"
+            android:background="#d7d7d7"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="28dp"
+            >
+            <TextView
+                android:id = "@+id/textview_custom_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "来访客户"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:layout_centerInParent="true"
+                />
+            <ImageView
+                android:id = "@+id/image_custom_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity ="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/pic_popup_custom_dropdown"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="30dp"
+            android:gravity="center"
+
+            android:text="默认等级"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <RelativeLayout
+            android:id="@+id/linearlayout_custom_level"
+            android:layout_width="160dp"
+            android:layout_height="32dp"
+            android:background="#d7d7d7"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="28dp"
+            >
+            <TextView
+                android:id = "@+id/textview_custom_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text = "B"
+                android:textColor="#000000"
+                android:textSize="13sp"
+                android:layout_centerInParent="true"
+                />
+            <ImageView
+                android:id = "@+id/image_custom_level"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity ="center_vertical"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="16dp"
+                android:src="@drawable/pic_popup_custom_dropdown"
+                />
+        </RelativeLayout>
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:text = "购房意向"
+        android:textColor="#000000"
+        android:textSize="13sp"
+        />
+
+    <EditText
+        android:id="@+id/edittext_custom_will"
+        android:layout_width="290dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginLeft="30dp"
+        android:padding="8dp"
+        android:gravity="top"
+        android:scrollbars="vertical"
+        android:text="客户对房子有很大的意愿"
+        android:background="@drawable/shape_edittext_border"
+        android:textColor="#000000"
+        android:textSize="13sp" />
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="15dp"
+        android:background="#b7b7b7">
+
+        <Button
+            android:id="@+id/button_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="@drawable/pic_button_confirm_submit"
+            android:text="提交"
+            android:textColor="#ffffff"
+            android:textSize="14sp" />
+    </RelativeLayout>
+
+
+</LinearLayout>

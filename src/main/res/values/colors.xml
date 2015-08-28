@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- 下拉刷新时，颜色值 -->
+    <color name="swiperefresh_color1">#ff00ddff</color>
+    <color name="swiperefresh_color2">#ffffbb33</color>
+    <color name="spinner_title_color">#ffbe0004</color>
+    <color name="swiperefresh_color4">#ffaa66cc</color>
+    <color name="titile_name_color">#ffffff</color>
+    <color name="titile_tip_color">#eb4a3f</color>
+    <color name="title_background_color">#00000000</color>
+    <color name="bottom_navigation_text_color">#a5afb6</color>
+    <color name="bottom_navigation_text_color_foucs">#eb4a3f</color>
+    <color name="title_item_text_isselted_color">#fced05</color>
+    <color name="gridview_item_custom_check">#fd7275</color>
+    <color name="gridview_item_custom_uncheck">#dddddd</color>
+    <color name="list_item_definition_wuxiao">#eb4a3f</color>
+    <color name="list_item_definition_youxiao">#43ce64</color>
+
+    <!-- new picture and video -->
+    <color name="action_click">#333333</color>
+    <color name="action_unclick">#FFFFFF</color>
+    <color name="viewfinder_mask">#60000000</color>
+    <color name="result_view">#b0000000</color>
+    <color name="viewfinder_frame">#ff000000</color>
+    <color name="viewfinder_laser">#ffff0000</color>
+    <color name="possible_result_points">#c0ffff00</color>
+    <color name="confirm_backgroud_color">#dbdbdb</color>
+    <color name="custom_backgroud_color">#b7b7b7</color>
+    <color name="global_black">#000000</color>
+    <color name="global_text_red">#eb4a3f</color>
+    <color name="global_text_vailed">#31c77f</color>
+
+    <color name="detail_text_on">#fb8689</color>
+    <color name="detail_text_no">#959595</color>
+
+    <color name="detail_line_on">#fb8689</color>
+    <color name="detail_line_no">#959595</color>
+
+    <color name="grid_bg">#FFFFFFFF</color>
+    <color name="grid_border">#FFC6C6C6</color>
+    <!-- 黑色 -->
+    <color name="black">#000000</color>
+    <color name="custom_follow_divider">#d7d7d7</color>
+    <color name="spinner_select">#d7d7d7</color>
+    <color name="spinner_unselect">#c9c9c9</color>
+
+</resources>

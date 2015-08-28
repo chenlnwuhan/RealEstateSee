@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+    <include layout="@layout/view_listview_custom"
+
+        android:layout_width="match_parent"
+        android:layout_marginBottom="71dp"
+        android:layout_height="match_parent"
+        />
+
+<RelativeLayout
+    android:layout_height="71dp"
+    android:layout_width="match_parent"
+    android:layout_alignParentLeft="true"
+    android:layout_alignParentBottom="true"
+    android:orientation="horizontal"
+    android:background="#cdf0f0f0"
+    >
+    <TextView
+        android:id="@+id/textview_custom_selectnum"
+        android:textSize="13sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="10dp"
+        android:text="已选:0人"
+        android:textColor="#eb4a3f"/>
+    <TextView
+        android:id="@+id/textview_custom_first"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:text="成交"
+        android:textSize="13sp"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="8dp"
+        android:background="@drawable/select_enable_red"/>
+    <TextView
+        android:id="@+id/textview_custom_second"
+        android:layout_toLeftOf="@id/textview_custom_first"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:text="认购"
+        android:textSize="13sp"
+        android:background="@drawable/select_enable_black"/>
+    <TextView
+        android:layout_toLeftOf="@id/textview_custom_second"
+        android:id="@+id/textview_custom_third"
+        android:layout_marginRight="8dp"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_centerVertical="true"
+        android:text="认筹"
+        android:textSize="13sp"
+        android:background="@drawable/select_enable_red"/>
+    <TextView
+        android:layout_toLeftOf="@id/textview_custom_third"
+        android:id="@+id/textview_custom_fourth"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_marginRight="8dp"
+        android:layout_centerVertical="true"
+        android:text="分配"
+        android:textSize="13sp"
+        android:background="@drawable/select_enable_black"/>
+
+
+
+</RelativeLayout>
+</RelativeLayout>

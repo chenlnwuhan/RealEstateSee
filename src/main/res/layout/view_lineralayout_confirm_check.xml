@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+    <LinearLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginBottom="20dp"
+            android:layout_marginTop="20dp">
+
+            <TextView
+                android:id="@+id/textview_confirm_selected"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="14dp"
+
+                android:gravity="center"
+                android:text="审查结果"
+                android:textColor="#eb4a3f"
+                android:textSize="13sp" />
+
+            <RadioGroup
+                android:id="@+id/radiogroup_confirm"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/textview_confirm_selected"
+                android:layout_marginLeft="80dp"
+                android:layout_toRightOf="@id/textview_confirm_selected"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/radio_youxiao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:button="@drawable/selector_img_check_confirm"
+                    android:checked="true"
+                    android:paddingLeft="10dp"
+                    android:text="有效"
+                    android:textColor="@color/selector_text_confirm"
+                    android:textSize="13sp"></RadioButton>
+
+
+                <RadioButton
+                    android:id="@+id/radio_wuxiao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="50dp"
+                    android:button="@drawable/selector_img_check_confirm"
+                    android:paddingLeft="10dp"
+                    android:text="无效"
+                    android:textColor="@color/selector_text_confirm"
+                    android:textSize="13sp"></RadioButton>
+
+            </RadioGroup>
+
+            <EditText
+                android:id="@+id/edittext_remarks_add"
+                android:layout_width="320dp"
+                android:layout_height="80dp"
+                android:layout_below="@id/textview_confirm_selected"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="20dp"
+                android:background="#dbdbdb"
+                android:gravity="top"
+                android:hint="填写备注"
+                android:inputType="textMultiLine"
+                android:maxLines="10"
+                android:minLines="8"
+                android:scrollbars="vertical"
+                android:textSize="13sp"
+                android:visibility="gone" />
+        </RelativeLayout>
+
+    </LinearLayout>

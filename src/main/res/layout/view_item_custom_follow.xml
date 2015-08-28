@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:background="#ffffff"
+    android:layout_height="200dp">
+    <ImageView
+        android:id="@+id/img_listview_isnew"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="12dp"
+        android:src="@drawable/pic_phone_go"
+        />
+    <LinearLayout
+        android:layout_toRightOf="@id/img_listview_isnew"
+        android:layout_toLeftOf="@+id/img_listview_more"
+        android:layout_centerVertical="true"
+        android:layout_width="fill_parent"
+        android:layout_marginRight="26dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:orientation="vertical"
+        >
+        <TextView
+
+            android:text="你有心的一个收到了士大夫似的佛i士大夫士大夫"
+            android:id="@+id/listview_item_info"
+            android:singleLine="true"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+        <TextView
+
+            android:id="@+id/listview_item_date"
+            android:singleLine="true"
+            android:layout_gravity="center"
+            android:ellipsize="end"
+            android:text="2017-07-07"
+            android:textSize="14sp"
+            android:textColor="#8d8d8d"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+</RelativeLayout>

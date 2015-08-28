@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:orientation="horizontal"
+        >
+
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="3"
+            android:gravity="center_horizontal"
+            android:singleLine="true"
+            android:text="客户信息"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <View
+            android:id="@+id/view_musthiden"
+
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#c2c2c2" />
+
+        <TextView
+            android:id="@+id/textview_musthiden"
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+
+            android:singleLine="true"
+            android:text="置业顾问"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#c2c2c2" />
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+
+            android:singleLine="true"
+            android:text="等级"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <View
+            android:layout_width="1dp"
+            android:layout_height="40dp"
+            android:layout_gravity="center_vertical"
+            android:background="#c2c2c2" />
+
+        <TextView
+            android:layout_width="10dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_weight="2"
+            android:gravity="center_horizontal"
+
+            android:singleLine="true"
+            android:text="最后跟进"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="fill_parent"
+        android:layout_height="1dp"
+        android:background="#c2c2c2" />
+
+    <com.handmark.pulltorefresh.library.PullToRefreshListView
+
+
+        android:id="@+id/listview_mail"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+         />
+
+
+</LinearLayout>

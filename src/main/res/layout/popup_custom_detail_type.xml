@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#B3000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="316dp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/shape_backgroud_custom"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="12dp"
+            android:layout_marginTop="19dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:text="客户级别"
+                android:textColor="#000000"
+                android:gravity="center"
+                android:textSize="15sp" />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="级别"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <RelativeLayout
+            android:id="@+id/linearlayout_popup_time"
+            android:layout_width="match_parent"
+            android:layout_height="33dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="7dp"
+            android:background="#dddddd"
+
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textview_popup_time"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_marginLeft="8dp"
+                android:layout_alignParentLeft="true"
+                android:text="A"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+
+            <ImageView
+                android:id = "@+id/image_phone_type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="20dp"
+                android:layout_centerVertical="true"
+                android:src="@drawable/pic_popup_custom_dropdown" />
+        </RelativeLayout>
+
+        <include layout="@layout/view_popup_custom_confirm" />
+    </LinearLayout>
+</RelativeLayout>

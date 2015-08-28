@@ -1,0 +1,391 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    android:orientation="vertical"
+    android:scrollbars="vertical">
+
+    <RelativeLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/home_banner_pic"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:src="@drawable/pic_home_banner_pic" />
+
+        <ImageView
+            android:id="@+id/imageview_volume"
+            android:layout_width="fill_parent"
+            android:layout_height="67dp"
+            android:layout_alignBottom="@id/home_banner_pic"
+            android:background="#66000000" />
+
+        <TextView
+            android:id="@+id/home_banner_volume"
+            android:layout_width="wrap_content"
+
+            android:layout_height="wrap_content"
+            android:layout_alignBottom="@id/home_banner_pic"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="10dp"
+            android:paddingLeft="20dp"
+            android:text="总成交量  套"
+            android:textColor="#ffffffff" />
+    </RelativeLayout>
+
+    <TableLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:gravity="left">
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="72dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/see_comming_relativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp">
+
+                    <ImageView
+                        android:id="@+id/see_comming_pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/pic_home_custom_comming" />
+
+                    <TextView
+                        android:id="@+id/see_comming_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_toRightOf="@id/see_comming_pic"
+                        android:text=""
+                        android:textColor="#ff000000" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/see_phone_relativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp">
+
+                    <ImageView
+                        android:id="@+id/see_phone_pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/pic_home_custom_phone" />
+
+                    <TextView
+                        android:id="@+id/see_phone_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_toRightOf="@id/see_phone_pic"
+                        android:text=""
+                        android:textColor="#ff000000" />
+                </RelativeLayout>
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:layout_width="fill_parent"
+            android:layout_height="72dp">
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/see_wei_relativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp">
+
+                    <ImageView
+                        android:id="@+id/see_wei_pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/pic_home_custom_wei" />
+
+                    <TextView
+                        android:id="@+id/see_wei_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_toRightOf="@id/see_wei_pic"
+                        android:text=""
+                        android:textColor="#ff000000" />
+                </RelativeLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="fill_parent"
+                android:layout_height="72dp"
+                android:layout_weight="1">
+
+                <RelativeLayout
+                    android:id="@+id/see_baobei_relativeLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="30dp">
+
+                    <ImageView
+                        android:id="@+id/see_baobei_pic"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:src="@drawable/pic_home_custom_baobei" />
+
+                    <TextView
+                        android:id="@+id/see_baobei_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerVertical="true"
+                        android:layout_marginLeft="11dp"
+                        android:layout_toRightOf="@id/see_baobei_pic"
+                        android:text=""
+                        android:textColor="#ff000000" />
+                </RelativeLayout>
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="80dp">
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1">
+
+            <ImageView
+
+                android:id="@+id/see_jieding_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/pic_home_custom_jieding" />
+
+            <ImageView
+                android:id="@+id/first_imageview"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_alignBottom="@id/see_jieding_pic"
+                android:layout_alignLeft="@id/see_jieding_pic"
+                android:layout_alignRight="@id/see_jieding_pic"
+                android:background="#b2ef8d05" />
+
+            <TextView
+                android:id="@+id/first_textview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/first_imageview"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="客户界定"
+                android:textColor="#ffffffff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/custom_difinition_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/first_textview1"
+                android:layout_below="@id/first_textview1"
+                android:gravity="center"
+                android:text=""
+                android:textColor="#ffffffff"
+                android:textSize="10sp" />
+
+
+            <TextView
+                android:id="@+id/see_jieding_tip_text"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="-7dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/shape_circular_tip"
+                android:paddingLeft="3dp"
+                android:paddingTop="2dp"
+                android:text="11"
+                android:textColor="@color/titile_name_color"
+                android:textSize="@dimen/title_tip_text_size" />
+        </RelativeLayout>
+
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_weight="1">
+
+            <ImageView
+
+                android:id="@+id/see_analyse_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+
+                android:src="@drawable/pic_home_custom_analyse" />
+
+            <ImageView
+                android:id="@+id/second_imageview"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_alignBottom="@id/see_analyse_pic"
+                android:layout_alignLeft="@id/see_analyse_pic"
+                android:layout_alignRight="@id/see_analyse_pic"
+                android:background="#b2fb6969" />
+
+            <TextView
+                android:id="@+id/second_textview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/second_imageview"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="客户分析"
+                android:textColor="#ffffffff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/second_textview1"
+                android:layout_below="@id/second_textview1"
+                android:text="客户变化趋势"
+                android:gravity="center"
+                android:textColor="#ffffffff"
+                android:textSize="10sp" />
+        </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1">
+
+            <ImageView
+                android:id="@+id/see_todo_pic"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_centerVertical="true"
+                android:src="@drawable/pic_home_todo_list" />
+
+            <ImageView
+                android:id="@+id/third_imageview"
+                android:layout_width="fill_parent"
+                android:layout_height="35dp"
+                android:layout_alignBottom="@id/see_todo_pic"
+                android:layout_alignLeft="@id/see_todo_pic"
+                android:layout_alignRight="@id/see_todo_pic"
+                android:background="#b200a185" />
+
+            <TextView
+                android:id="@+id/third_textview1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/third_imageview"
+                android:layout_centerHorizontal="true"
+                android:gravity="center"
+                android:text="待办事项"
+                android:textColor="#ffffffff"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/see_todo_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/third_textview1"
+                android:layout_below="@id/third_textview1"
+                android:text=""
+                android:gravity="center"
+                android:textColor="#ffffffff"
+                android:textSize="10sp" />
+
+
+            <TextView
+                android:id="@+id/see_toto_tip_text"
+                android:layout_width="15dp"
+                android:layout_height="15dp"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginLeft="-7dp"
+                android:layout_marginRight="3dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/shape_circular_tip"
+                android:paddingLeft="3dp"
+                android:paddingTop="2dp"
+                android:text="11"
+                android:textColor="@color/titile_name_color"
+                android:textSize="@dimen/title_tip_text_size" />
+        </RelativeLayout>
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linnearlayout_home_addreslist"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp"
+        android:layout_marginTop="10dp"
+        android:background="#ffd9dad9"
+        android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="8dp"
+            android:src="@drawable/pic_home_address_list" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginBottom="8dp"
+            android:layout_marginTop="5dp"
+            android:text="通讯录"
+            android:textColor="#ffeb4a3f" />
+
+    </LinearLayout>
+
+</LinearLayout>

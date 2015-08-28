@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#B3000000"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="320dp"
+        android:layout_height="445dp"
+        android:layout_centerInParent="true"
+        android:background="#ffffff"
+        android:orientation="vertical">
+
+        <include layout="@layout/view_popup_custom_head" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+
+                android:text="成交时间"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="成交房号"
+
+                android:textColor="#000000"
+                android:textSize="12sp" />
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearlayout_popup_time"
+                android:layout_width="1dp"
+                android:layout_height="33dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="12dp"
+                android:background="#dddddd"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_popup_time"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:text=""
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/linearlayout_pupup_buildno"
+                android:layout_width="1dp"
+                android:layout_height="33dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_marginLeft="12dp"
+                android:background="#dddddd"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_popup_buildno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:text="33-21-17"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/img_popup_buildno"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:src="@drawable/pic_popup_custom_dropdown" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_weight="1"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="12dp"
+
+                android:text="付款方式"
+                android:textColor="#000000"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="1dp"
+                android:layout_weight="1"
+                android:layout_marginRight="20dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:text="成交金额"
+
+                android:textColor="#000000"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/linearlayout_popup_paytype"
+                android:layout_width="1dp"
+                android:layout_height="33dp"
+                android:layout_weight="1"
+                android:layout_marginLeft="12dp"
+                android:background="#dddddd"
+
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/textview_popup_paytype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="8dp"
+                    android:text="全款"
+                    android:textColor="#000000"
+                    android:textSize="12sp" />
+
+                <ImageView
+                    android:id="@+id/image_popup_paytype"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:layout_marginLeft="12dp"
+                    android:src="@drawable/pic_popup_custom_dropdown" />
+            </LinearLayout>
+            <EditText
+                android:id="@+id/edittext_pupup_money"
+                android:layout_width="1dp"
+                android:layout_marginLeft="5dp"
+                android:layout_weight="1"
+                android:text="20000"
+                android:layout_height="33dp"
+                android:textColor="#000000"
+                android:background="#dddddd"
+                android:paddingLeft="3dp"
+                android:layout_marginRight="20dp"
+                android:textSize="12sp"
+                />
+        </LinearLayout>
+        <TextView
+            android:id="@+id/textview_linearlayout_pay"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:text="待结佣金"
+            android:textColor="#000000"
+            android:textSize="12sp" />
+
+        <EditText
+            android:id="@+id/edittext_remarks_pay"
+            android:layout_width="match_parent"
+            android:layout_marginRight="20dp"
+            android:layout_height="25dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="10dp"
+            android:background="#dbdbdb"
+
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:minLines="8"
+            android:scrollbars="vertical"
+            android:textSize="13sp" />
+        <include layout="@layout/view_popup_custom_remarks" />
+
+        <include layout="@layout/view_popup_custom_confirm" />
+    </LinearLayout>
+</RelativeLayout>
