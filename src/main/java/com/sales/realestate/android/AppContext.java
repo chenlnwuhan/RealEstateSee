@@ -20,6 +20,7 @@ public class AppContext extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+
         CrashHandler crashHandler = CrashHandler.getInstance();
         crashHandler.init(getApplicationContext());
         mApplication = this;
