@@ -329,6 +329,9 @@ public class StatisticsCustomAty extends KJActivity {
                     if (isError) {
                         toast("到访量未读取！");
                     } else {
+                        if (errorMessage.equals("NoData")) {
+                            return;
+                        }
                         Gson gson = new Gson();
                         try {
                         	VisitCustomerVolumeInfo mTableVolumeInfo = gson.fromJson(returnStr, VisitCustomerVolumeInfo.class);                           
@@ -346,6 +349,9 @@ public class StatisticsCustomAty extends KJActivity {
                     if (isError) {
                         toast("到访客户列表未读取！");
                     } else {
+                        if (errorMessage.equals("NoData")) {
+                            return;
+                        }
                         Gson gson = new Gson();
                         try {
                             VisitCustomJson mCustomJson = gson.fromJson(returnStr, VisitCustomJson.class);

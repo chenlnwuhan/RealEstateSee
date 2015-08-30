@@ -158,7 +158,7 @@ public class CustomDonePW extends PopupWindow {
                         AppContext.getCurrentActivity().toast("成交确认失败！");
                     } else {
                         try {
-                            AppContext.getCurrentActivity().toast("成交确认成功！");
+                            AppContext.getCurrentActivity().toast("成交成功！");
                             textview_custom_distribution_cancel.setClickable(false);
                             textview_custom_distribution_ok.setClickable(false);
                             mHandler.postDelayed(mRunnable, GlobalVarible.GLOBALDELAY);
@@ -248,14 +248,14 @@ public class CustomDonePW extends PopupWindow {
                     AppContext.getCurrentActivity().toast("请选择房号！");
                 } else {
                     if (buyType == 1) {
-                        HttpBusiness.getCustomDoneApply(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, roomName, edittext_pupup_money.getText().toString(), payType, edittext_remarks_pay.getText().toString(),edittext_pupup_money.getText().toString(),new CustomDoneHttpBusiness());
+                        HttpBusiness.getCustomDoneApply(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, textview_popup_buildno.getText().toString(), edittext_pupup_money.getText().toString(), payType, edittext_remarks_pay.getText().toString(),edittext_pupup_money.getText().toString(),new CustomDoneHttpBusiness());
                     } else {
                         if (StringUtils.isEmpty(edittext_remarks_pay.getText().toString())) {
                             AppContext.getCurrentActivity().toast("请填入佣金金额！");
                         } else if (!StringUtils.isNumber(edittext_remarks_pay.getText().toString())) {
                             AppContext.getCurrentActivity().toast("佣金金额格式不正确！");
                         } else {
-                            HttpBusiness.getCustomDoneConfirm(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, roomName, edittext_pupup_money.getText().toString(), payType, edittext_remarks_pay.getText().toString(),edittext_pupup_money.getText().toString(), new CustomDoneHttpBusiness());
+                            HttpBusiness.getCustomDoneConfirm(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, textview_popup_buildno.getText().toString(), edittext_pupup_money.getText().toString(), payType, edittext_remarks_pay.getText().toString(),edittext_pupup_money.getText().toString(), new CustomDoneHttpBusiness());
 
                         }
                     }

@@ -17,6 +17,7 @@ import org.kymjs.kjframe.utils.StringUtils;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -215,6 +216,9 @@ public class GlobalVarible {
 
     public static void setTitleCustomList(ArrayList<SpinnerItemInfo> titleCustomList) {
         TITLE_CUSTOM_LIST = titleCustomList;
+        for(int i=0;i<TITLE_CUSTOM_LIST.size();i++){
+            TITLE_CUSTOM_LIST.get(i).name +="("+TITLE_CUSTOM_LIST.get(i).Count+")";
+        }
     }
 
     private static ArrayList<SpinnerItemInfo> TITLE_CUSTOM_LIST = new ArrayList<SpinnerItemInfo>();
@@ -563,6 +567,22 @@ public class GlobalVarible {
         return mTitilList;
     }
 
+    public static ArrayList<SpinnerItemInfo> initTitleListFocus(ArrayList<SpinnerItemInfo> mTitilList,String add,String id) {
+
+        for (int i = 0; i < mTitilList.size(); i++) {
+            if(mTitilList.get(i).id.equals(id)){
+                int t = mTitilList.get(i).name.indexOf("(");
+                if(t>0){
+                    mTitilList.get(i).name = mTitilList.get(i).name.substring(0,t);
+                }
+                mTitilList.get(i).name += add;
+                break ;
+
+            }
+        }
+        return mTitilList;
+    }
+
     public static List<HouseInfo> getHouseList() {
         return HOUSE_LIST;
     }
@@ -635,10 +655,20 @@ public class GlobalVarible {
                 if(info.Dong.equals(build.Dong) && info.Dan.equals(build.Dan)) {
                     houses.add(info);
                     if(i == list.size() -1) {
+                        Collections.sort(houses, new Comparator<HouseInfo>() {
+                            public int compare(HouseInfo arg0, HouseInfo arg1) {
+                                return arg0.RoomName.compareTo(arg1.RoomName);
+                            }
+                        });
                         result.put(build, houses);
                     }
                 } else {
                     if(houses != null) {
+                        Collections.sort(houses, new Comparator<HouseInfo>() {
+                            public int compare(HouseInfo arg0, HouseInfo arg1) {
+                                return arg0.RoomName.compareTo(arg1.RoomName);
+                            }
+                        });
                         result.put(build, houses);
                     }
                     build = new BuildingUnitInfo();

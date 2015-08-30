@@ -39,9 +39,13 @@
         <activity
             android:name="com.sales.realestate.android.demo.LoginAty"
             android:launchMode="singleTask"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"/>
 
-        </activity>
+        <activity
+            android:name="com.sales.realestate.android.demo.LoginAty2"
+            android:launchMode="singleTask"
+            android:screenOrientation="portrait"/>
+
         <activity
             android:name="com.sales.realestate.android.demo.TableAty"
             android:launchMode="singleTask"

@@ -98,7 +98,7 @@ public class HttpBusiness {
 
     public static void getMessageLogin(String userLogin, String password, String messageCode,RequestCallBack mMyCallBack) {
         showHttpWaitProgress();
-        HttpBusiness.postHttp(HTTP_KEY_LOGIN, UrlApiConfig.URL_USER_LOGIN, UrlApiConfig.getUrlUserMessageLoginParams(userLogin, password,messageCode), mMyCallBack);
+        HttpBusiness.postHttp(HTTP_KEY_LOGIN, UrlApiConfig.UR_MESSAGE_LOGIN, UrlApiConfig.getUrlUserMessageLoginParams(userLogin, password,messageCode), mMyCallBack);
     }
     public static void sendMessage(String loginID, RequestCallBack mMyCallBack) {
         showHttpWaitProgress();

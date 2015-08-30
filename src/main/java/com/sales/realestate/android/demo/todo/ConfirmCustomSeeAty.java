@@ -10,6 +10,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -18,9 +19,6 @@ import com.sales.realestate.android.GlobalVarible;
 import com.sales.realestate.android.HttpBusiness;
 import com.sales.realestate.android.R;
 import com.sales.realestate.android.bean.CustomerSeeInfo;
-import com.sales.realestate.android.bean.ToDoListJson;
-import com.sales.realestate.android.demo.MainActivity;
-import com.sales.realestate.android.demo.todo.ToDoListDetailAty.ToDoListDetailHttpBusiness;
 import com.sales.realestate.android.view.calendaer.CalendarCard;
 import com.sales.realestate.android.view.calendaer.CardGridItem;
 import com.sales.realestate.android.view.calendaer.OnCellItemClick;
@@ -56,18 +54,30 @@ public class ConfirmCustomSeeAty extends KJActivity {
 
     @BindView(id = R.id.textview_confirm_selected)
     public TextView textview_confirm_selected;
-    
+
+    @BindView(id = R.id.relativelayout_check)
+    public RelativeLayout relativelayout_check;
+    @BindView(id = R.id.relativelayout_show1)
+    public RelativeLayout relativelayout_show1;
+    @BindView(id = R.id.relativelayout_show2)
+    public RelativeLayout relativelayout_show2;
+
+    @BindView(id = R.id.textview_shenhei_result)
+    public TextView textview_shenhei_result;
+    @BindView(id = R.id.textview_shenhei_beizhu)
+    public TextView textview_shenhei_beizhu;
+
     @BindView(id = R.id.textview_confirm_phone)
     public TextView textview_confirm_phone;
     @BindView(id = R.id.textview_confirm_name)
     public TextView textview_confirm_name;
     @BindView(id = R.id.textview_confirm_building)
     public TextView textview_confirm_building;
-    @BindView(id = R.id.linearlayout_popup_time,click = true)
+    @BindView(id = R.id.linearlayout_popup_time, click = true)
     public LinearLayout linearlayout_popup_time;
     @BindView(id = R.id.textview_confirm_time)
     public TextView textview_confirm_time;
-    
+
     @BindView(id = R.id.textview_confirm_propertyconsultant)
     public TextView textview_confirm_propertyconsultant;
     @BindView(id = R.id.textview_confirm_applicants_phone)
@@ -80,12 +90,14 @@ public class ConfirmCustomSeeAty extends KJActivity {
     public TextView textview_confirm_remarks;
     @BindView(id = R.id.btn_confirm_send)
     public Button btn_confirm_send;
-    
+
     private String BuildingID = "";
     private String CustomerID = "";
     private String ApplyID = "";
     private int isLook = 1;
+    private String ISDeal = "";
     private CustomerSeeInfo mCustomerSeeInfo = new CustomerSeeInfo();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setActivityActionMode(ActionBarMode.CUSTOMTITILE);
@@ -94,27 +106,48 @@ public class ConfirmCustomSeeAty extends KJActivity {
         setmBottomNavigation(BottomNavigation.JUSTNOBOTTOM);
         super.onCreate(savedInstanceState);
     }
-    public void initView () {
-    	textview_confirm_phone.setText(mCustomerSeeInfo.Mobile);
-    	textview_confirm_name.setText(mCustomerSeeInfo.CustomerName);
-    	textview_confirm_building.setText(mCustomerSeeInfo.BuildingName);    	
-    	textview_confirm_time.setText(mCustomerSeeInfo.LookTime);
-    	textview_confirm_propertyconsultant.setText(mCustomerSeeInfo.ConsultantName);
+
+    public void initView() {
+        textview_confirm_phone.setText(mCustomerSeeInfo.Mobile);
+        textview_confirm_name.setText(mCustomerSeeInfo.CustomerName);
+        textview_confirm_building.setText(mCustomerSeeInfo.BuildingName);
+        textview_confirm_time.setText(mCustomerSeeInfo.LookTime);
+        textview_confirm_propertyconsultant.setText(mCustomerSeeInfo.ConsultantName);
+        if (mCustomerSeeInfo.IsLook.equals("1")) {
+            textview_shenhei_result.setText("有效");
+        } else {
+            textview_shenhei_result.setText("无效");
+        }
+        textview_shenhei_beizhu.setText(mCustomerSeeInfo.CustomerDetails);
+
+        if (ISDeal.equals("1")) {
+            relativelayout_check.setVisibility(View.GONE);
+            relativelayout_show1.setVisibility(View.VISIBLE);
+            relativelayout_show2.setVisibility(View.VISIBLE);
+            btn_confirm_send.setVisibility(View.GONE);
+            linearlayout_popup_time.setEnabled(false);
+
+
+        } else {
+            relativelayout_check.setVisibility(View.VISIBLE);
+            relativelayout_show1.setVisibility(View.GONE);
+            relativelayout_show2.setVisibility(View.GONE);
+        }
         String applyName = "";
         String applyPhone = "";
-        if(!StringUtils.isEmpty(mCustomerSeeInfo.ApplyName)){
+        if (!StringUtils.isEmpty(mCustomerSeeInfo.ApplyName)) {
             String[] tmp = mCustomerSeeInfo.ApplyName.split(" ");
             applyName = tmp[0];
-            if(tmp.length>1){
+            if (tmp.length > 1) {
                 applyPhone = tmp[1];
             }
         }
 
         textview_confirm_applicants_phone.setText(applyPhone);
-    	textview_confirm_applicants_name.setText(applyName);
-    	textview_confirm_applicants_time.setText(mCustomerSeeInfo.ApplyTime);    	
-    	textview_confirm_remarks.setText(mCustomerSeeInfo.CustomerDetails);   
-    	btn_confirm_send.setOnClickListener(new OnClickListener() {
+        textview_confirm_applicants_name.setText(applyName);
+        textview_confirm_applicants_time.setText(mCustomerSeeInfo.ApplyTime);
+        textview_confirm_remarks.setText(mCustomerSeeInfo.ApplyDetails);
+        btn_confirm_send.setOnClickListener(new OnClickListener() {
 
             @Override
             public void onClick(View v) {
@@ -130,35 +163,37 @@ public class ConfirmCustomSeeAty extends KJActivity {
                     if (isLook == 1) {
                         remork = "";
                     }
-                    HttpBusiness.updateCustomSee(BuildingID, CustomerID, ApplyID, String.valueOf(isLook), remork.trim(),textview_confirm_time.getText().toString(), new ToDoListDetailHttpBusiness());
+                    HttpBusiness.updateCustomSee(BuildingID, CustomerID, ApplyID, String.valueOf(isLook), remork.trim(), textview_confirm_time.getText().toString(), new ToDoListDetailHttpBusiness());
                 }
 
             }
         });
     }
-    @Override
-	protected void onStart() {
-		super.onStart();
-		Bundle bundle = getIntent().getExtras();
-        if (bundle != null) {
-        	   BuildingID = bundle.getString("BuildingID");
-               CustomerID = bundle.getString("CustomerID");
-               ApplyID = bundle.getString("ApplyID"); 
-               if(StringUtils.isEmpty(BuildingID)){
-            	   BuildingID = "";
-               }
-               if(StringUtils.isEmpty(CustomerID)){
-            	   CustomerID = "";
-               }
-               if(StringUtils.isEmpty(ApplyID)){
-            	   ApplyID = "";
-               }
-                HttpBusiness.getCustomSee(BuildingID,CustomerID,ApplyID,new ToDoListDetailHttpBusiness());
-            
-        }
-	}
 
-	@Override
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Bundle bundle = getIntent().getExtras();
+        if (bundle != null) {
+            BuildingID = bundle.getString("BuildingID");
+            CustomerID = bundle.getString("CustomerID");
+            ApplyID = bundle.getString("ApplyID");
+            ISDeal = bundle.getString("ISDeal");
+            if (StringUtils.isEmpty(BuildingID)) {
+                BuildingID = "";
+            }
+            if (StringUtils.isEmpty(CustomerID)) {
+                CustomerID = "";
+            }
+            if (StringUtils.isEmpty(ApplyID)) {
+                ApplyID = "";
+            }
+            HttpBusiness.getCustomSee(BuildingID, CustomerID, ApplyID, new ToDoListDetailHttpBusiness());
+
+        }
+    }
+
+    @Override
     public void widgetClick(View v) {
         super.widgetClick(v);
         switch (v.getId()) {
@@ -234,25 +269,25 @@ public class ConfirmCustomSeeAty extends KJActivity {
         super.initWidget();
         initConfirmModule();
         initTitle(0);
-        ((View)linnearlayout_confirm_root.getParent()).setBackgroundColor(getResources().getColor(R.color.confirm_backgroud_color));
+        ((View) linnearlayout_confirm_root.getParent()).setBackgroundColor(getResources().getColor(R.color.confirm_backgroud_color));
 
     }
 
-    public void initConfirmModule(){
+    public void initConfirmModule() {
         radiogroup_confirm.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                if(R.id.radio_youxiao==checkedId){
-                	isLook = 1;
+                if (R.id.radio_youxiao == checkedId) {
+                    isLook = 1;
                     edittext_remarks_add.setVisibility(View.GONE);
-                }else{
-                	isLook = 0;
+                } else {
+                    isLook = 0;
                     edittext_remarks_add.setVisibility(View.VISIBLE);
                 }
             }
         });
     }
-    
+
     public class ToDoListDetailHttpBusiness extends HttpBusiness.MyCallBack {
         @Override
         public void onSuccess(int uid, String returnStr) {
@@ -260,42 +295,40 @@ public class ConfirmCustomSeeAty extends KJActivity {
             switch (uid) {
                 case HttpBusiness.HTTP_KEY_GET_CUSTOM_SEE:
                     if (isError) {
-                        toast(textViewTitle.getText().toString()+"未读取！");
+                        toast(textViewTitle.getText().toString() + "未读取！");
                     } else {
                         Gson gson = new Gson();
                         try {
-                        	mCustomerSeeInfo = gson.fromJson(returnStr, CustomerSeeInfo.class);
-                        	if(mCustomerSeeInfo != null) {
-                        		initView();
-                        	}
+                            mCustomerSeeInfo = gson.fromJson(returnStr, CustomerSeeInfo.class);
+                            if (mCustomerSeeInfo != null) {
+                                initView();
+                            }
                         } catch (Exception e) {
-                            toast(textViewTitle.getText().toString()+"解析错误！");
+                            toast(textViewTitle.getText().toString() + "解析错误！");
                         }
                     }
                     break;
-                    
+
                 case HttpBusiness.HTTP_KEY_UPDATE_CUSTOM_SEE:
-                	 if (isError) {
-                         toast("界定客户带看失败！");
-                         
-                     } else {
-                    	 toast("界定客户带看成功！");
-                    	 mHandler.postDelayed(new Runnable() {
-							
-							@Override
-							public void run() {
-								// TODO Auto-generated method stub
-								onBackPressed();
-							}
-						}, GlobalVarible.GLOBALDELAY);
-                    	
-                     }
-                	break;
+                    if (isError) {
+                        toast("带看审核失败！");
+
+                    } else {
+                        toast("带看审核成功！");
+                        mHandler.postDelayed(new Runnable() {
+
+                            @Override
+                            public void run() {
+                                // TODO Auto-generated method stub
+                                onBackPressed();
+                            }
+                        }, GlobalVarible.GLOBALDELAY);
+
+                    }
+                    break;
             }
         }
     }
-    
-    
-    
-   
+
+
 }

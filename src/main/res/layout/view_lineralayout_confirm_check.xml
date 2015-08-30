@@ -1,79 +1,141 @@
 <?xml version="1.0" encoding="utf-8"?>
-    <LinearLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#ffffff"
+    android:orientation="vertical">
+
+    <RelativeLayout
+        android:id="@+id/relativelayout_check"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#ffffff"
-        android:orientation="vertical">
+        android:layout_gravity="center_vertical"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp">
 
-        <RelativeLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:id="@+id/textview_confirm_selected"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_vertical"
-            android:layout_marginBottom="20dp"
-            android:layout_marginTop="20dp">
+            android:layout_marginLeft="14dp"
 
-            <TextView
-                android:id="@+id/textview_confirm_selected"
+            android:gravity="center"
+            android:text="审查结果"
+            android:textColor="#eb4a3f"
+            android:textSize="13sp" />
+
+        <RadioGroup
+            android:id="@+id/radiogroup_confirm"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignTop="@id/textview_confirm_selected"
+            android:layout_marginLeft="80dp"
+            android:layout_toRightOf="@id/textview_confirm_selected"
+            android:orientation="horizontal">
+
+            <RadioButton
+                android:id="@+id/radio_youxiao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="14dp"
+                android:button="@drawable/selector_img_check_confirm"
+                android:checked="true"
+                android:paddingLeft="10dp"
+                android:text="有效"
+                android:textColor="@color/selector_text_confirm"
+                android:textSize="13sp"></RadioButton>
 
-                android:gravity="center"
-                android:text="审查结果"
-                android:textColor="#eb4a3f"
-                android:textSize="13sp" />
 
-            <RadioGroup
-                android:id="@+id/radiogroup_confirm"
+            <RadioButton
+                android:id="@+id/radio_wuxiao"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignTop="@id/textview_confirm_selected"
-                android:layout_marginLeft="80dp"
-                android:layout_toRightOf="@id/textview_confirm_selected"
-                android:orientation="horizontal">
+                android:layout_marginLeft="50dp"
+                android:button="@drawable/selector_img_check_confirm"
+                android:paddingLeft="10dp"
+                android:text="无效"
+                android:textColor="@color/selector_text_confirm"
+                android:textSize="13sp"></RadioButton>
 
-                <RadioButton
-                    android:id="@+id/radio_youxiao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:button="@drawable/selector_img_check_confirm"
-                    android:checked="true"
-                    android:paddingLeft="10dp"
-                    android:text="有效"
-                    android:textColor="@color/selector_text_confirm"
-                    android:textSize="13sp"></RadioButton>
+        </RadioGroup>
 
+        <EditText
+            android:id="@+id/edittext_remarks_add"
+            android:layout_width="320dp"
+            android:layout_height="80dp"
+            android:layout_below="@id/textview_confirm_selected"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:background="#dbdbdb"
+            android:gravity="top"
+            android:hint="填写备注"
+            android:inputType="textMultiLine"
+            android:maxLines="10"
+            android:minLines="8"
+            android:scrollbars="vertical"
+            android:textSize="13sp"
+            android:visibility="visible" />
+    </RelativeLayout>
 
-                <RadioButton
-                    android:id="@+id/radio_wuxiao"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="50dp"
-                    android:button="@drawable/selector_img_check_confirm"
-                    android:paddingLeft="10dp"
-                    android:text="无效"
-                    android:textColor="@color/selector_text_confirm"
-                    android:textSize="13sp"></RadioButton>
+    <RelativeLayout
+        android:id="@+id/relativelayout_show1"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#ffffff">
 
-            </RadioGroup>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:gravity="center"
+            android:text="审核结果"
+            android:textColor="#000000"
+            android:textSize="13sp" />
 
-            <EditText
-                android:id="@+id/edittext_remarks_add"
-                android:layout_width="320dp"
-                android:layout_height="80dp"
-                android:layout_below="@id/textview_confirm_selected"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
-                android:background="#dbdbdb"
-                android:gravity="top"
-                android:hint="填写备注"
-                android:inputType="textMultiLine"
-                android:maxLines="10"
-                android:minLines="8"
-                android:scrollbars="vertical"
-                android:textSize="13sp"
-                android:visibility="gone" />
-        </RelativeLayout>
+        <TextView
+            android:id="@+id/textview_shenhei_result"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:gravity="right"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="11sp" />
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_gravity="center_vertical"
+        android:background="#c2c2c2" />
+    <RelativeLayout
+        android:id="@+id/relativelayout_show2"
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#ffffff">
 
-    </LinearLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="14dp"
+            android:gravity="center"
+            android:text="审核备注"
+            android:textColor="#000000"
+            android:textSize="13sp" />
+
+        <TextView
+            android:id="@+id/textview_shenhei_beizhu"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="14dp"
+            android:gravity="right"
+            android:text=""
+            android:textColor="#000000"
+            android:textSize="11sp" />
+    </RelativeLayout>
+
+</LinearLayout>

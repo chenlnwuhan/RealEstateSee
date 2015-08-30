@@ -40,4 +40,6 @@ public class SpinnerItemInfo {
     public String RoomName ;
 
     public String parentId = "";
+
+    public String Count = "";
 }

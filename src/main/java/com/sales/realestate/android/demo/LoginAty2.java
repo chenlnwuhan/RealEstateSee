@@ -5,7 +5,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
-import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -34,7 +33,7 @@ import org.kymjs.kjframe.utils.StringUtils;
 /**
  * Created by chenlin on 2015/7/20.
  */
-public class LoginAty extends KJActivity {
+public class LoginAty2 extends KJActivity {
 
     @BindView(id = R.id.view_toast_login_err)
     public RelativeLayout toastLoginErr;
@@ -80,7 +79,7 @@ public class LoginAty extends KJActivity {
                 while (i < 5) {
                     KJLoger.debug(System.currentTimeMillis() + ":" + i);
                     i++;
-                    String channelId = (String) SPUtils.get2(LoginAty.this, "BAIDU_CHANNELID", "");
+                    String channelId = (String) SPUtils.get2(LoginAty2.this, "BAIDU_CHANNELID", "");
                     if (!StringUtils.isEmpty(channelId)) {
                         break;
                     } else {
@@ -97,14 +96,14 @@ public class LoginAty extends KJActivity {
 
         @Override
         protected void onPostExecute(Void result) {
-            KJLoger.state(LoginAty.this.getClass().getName(), System.currentTimeMillis() + "baiduHandler");
+            KJLoger.state(LoginAty2.this.getClass().getName(), System.currentTimeMillis() + "baiduHandler");
             buttonLogin.setClickable(true);
-            String channelId = (String) SPUtils.get2(LoginAty.this, "BAIDU_CHANNELID", "");
+            String channelId = (String) SPUtils.get2(LoginAty2.this, "BAIDU_CHANNELID", "");
             if (!StringUtils.isEmpty(channelId)) {
                 HttpBusiness.getBaiDuCloud(channelId, new LoginHttpBusiness());
             } else {
                 isFinish = true;
-                skipActivity(LoginAty.this, MainActivity.class);
+                skipActivity(LoginAty2.this, MainActivity.class);
             }
         }
     }
@@ -145,7 +144,7 @@ public class LoginAty extends KJActivity {
                             //               AppContext.getCurrentActivity().toast("消息推送绑定成功！");
                             AppInit.baidubindstore("1");
                             isFinish = true;
-                            skipActivity(LoginAty.this, MainActivity.class);
+                            skipActivity(LoginAty2.this, MainActivity.class);
                         } catch (Exception e) {
                             AppContext.getCurrentActivity().toast("消息推送绑定结果解析错误！");
                         }
@@ -163,16 +162,16 @@ public class LoginAty extends KJActivity {
                             imageViewVerifycode.setClickable(true);
                         }
                     } else {
-                        KJLoger.state(LoginAty.this.getClass().getName(), System.currentTimeMillis() + "OK");
+                        KJLoger.state(LoginAty2.this.getClass().getName(), System.currentTimeMillis() + "OK");
                         Gson gson = new Gson();
                         UserInfo mUserInfo = gson.fromJson(returnStr, UserInfo.class);
                         GlobalVarible.IS_LOGIN = true;
                         AppInit.storeUserInfo(mUserInfo.UserID, mUserInfo.UserName, password, mUserInfo.Token, mUserInfo.RoleID, mUserInfo.RoleName, mUserInfo.Mobile, mUserInfo.HeadImg);
-                        String channelId = (String) SPUtils.get2(LoginAty.this, "BAIDU_CHANNELID", "");
-                        KJLoger.state(LoginAty.this.getClass().getName(), System.currentTimeMillis() + "OK1");
+                        String channelId = (String) SPUtils.get2(LoginAty2.this, "BAIDU_CHANNELID", "");
+                        KJLoger.state(LoginAty2.this.getClass().getName(), System.currentTimeMillis() + "OK1");
                         PushManager.startWork(getApplicationContext(),
                                 PushConstants.LOGIN_TYPE_API_KEY,
-                                AppUtils.getMetaValue(LoginAty.this, "api_key"));
+                                AppUtils.getMetaValue(LoginAty2.this, "api_key"));
                         if (StringUtils.isEmpty(channelId)) {
                             showProgress();
                             buttonLogin.setClickable(false);
@@ -341,7 +340,7 @@ public class LoginAty extends KJActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setActivityActionMode(ActionBarMode.NOTITLE);
-        setRootViewResId(R.layout.aty_login);
+        setRootViewResId(R.layout.aty_login2);
         setmBottomNavigation(BottomNavigation.ALL);
         super.onCreate(savedInstanceState);
 

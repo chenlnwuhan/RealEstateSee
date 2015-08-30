@@ -1,5 +1,6 @@
 package com.sales.realestate.android.demo;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -39,6 +40,7 @@ import com.sales.realestate.android.bean.HouseInfo;
 import com.sales.realestate.android.bean.SailHouseDetail;
 import com.sales.realestate.android.demo.custom.CustomAty;
 import com.sales.realestate.android.demo.more.MoreAty;
+import com.sales.realestate.android.utils.FileUtils;
 import com.sales.realestate.android.view.popupwindow.SaleBuildSelect1PW;
 import com.sales.realestate.android.view.popupwindow.SaleBuildSelect2PW;
 import com.sales.realestate.android.view.popupwindow.SaleControlPW;
@@ -128,6 +130,7 @@ public class SaleAty extends KJActivity {
                     } else {
                         Gson gson = new Gson();
                         try {
+                            FileUtils.writeFile(org.kymjs.kjframe.utils.FileUtils.getSDCardPath() + File.separator + "1.txt", returnStr);
                             mBuildJson = gson.fromJson(returnStr, BuildJson.class);
                             unitList = GlobalVarible.findUnitList(mBuildJson.edList);
                             houseList = GlobalVarible.getUnitHouseList(mBuildJson.enList);
@@ -278,32 +281,21 @@ public class SaleAty extends KJActivity {
         ldList.removeAllViews();
         String lc = "";
         List<HouseInfo> curList = null;
-        for (int i = 0; i < list.size(); i++) {
+        for (int i = list.size()-1; i >= 0; i--) {
             HouseInfo info = list.get(i);
             if (!lc.equals(info.Ceng)) {
                 lc = info.Ceng;
                 List<HouseInfo> lastList = curList;
                 if (lastList != null) {
-//                    Collections.sort(lastList, new Comparator<HouseInfo>() {
-//                        public int compare(HouseInfo arg0, HouseInfo arg1) {
-//                            return arg0.RoomName.compareTo(arg1.RoomName);
-//                        }
-//                    });
                     clList.add(lastList);
                 }
                 curList = new ArrayList<HouseInfo>();
             }else{
                 if(i==(list.size()-1)){
                     List<HouseInfo> lastList = curList;
-//                    Collections.sort(lastList, new arator<HouseInfo>() {
-//                        public int compare(HouseInfo arg0, HouseInfo arg1) {
-//                            return arg0.RoomName.compareTo(arg1.RoomName);
-//                        }
-//                    });
                     clList.add(lastList);
                 }
             }
-            curList.add(info);
             if ("1".equals(info.HouseType)) {
                 String[] dels = info.HouseTypeName.split("-");
                 if ("1".equals(dels[1])) {
@@ -314,7 +306,11 @@ public class SaleAty extends KJActivity {
                         curList.add(nullinfo);
                     }
                 }
+            }else if("1".equals(info.HouseType)){
+
             }
+            curList.add(info);
+
         }
 
         for (int i = 0; i < clList.size(); i++) {

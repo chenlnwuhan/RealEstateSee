@@ -9,6 +9,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.google.gson.Gson;
@@ -76,9 +77,25 @@ public class ConfirmCustomDefinitionAty extends KJActivity {
     public TextView textview_confirm_applicants_phone;
     @BindView(id = R.id.btn_confirm_send)
     public Button btn_confirm_send;
+
+
+    @BindView(id = R.id.relativelayout_check)
+    public RelativeLayout relativelayout_check;
+    @BindView(id = R.id.relativelayout_show1)
+    public RelativeLayout relativelayout_show1;
+    @BindView(id = R.id.relativelayout_show2)
+    public RelativeLayout relativelayout_show2;
+
+    @BindView(id = R.id.textview_shenhei_result)
+    public TextView textview_shenhei_result;
+    @BindView(id = R.id.textview_shenhei_beizhu)
+    public TextView textview_shenhei_beizhu;
+
+
     private String BuildingID = "";
     private String CustomerID = "";
     private String ApplyID = "";
+    private String ISDeal = "";
     private int isLook = 1;
 
     @Override
@@ -86,9 +103,11 @@ public class ConfirmCustomDefinitionAty extends KJActivity {
         super.onStart();
         Bundle bundle = getIntent().getExtras();
         if (bundle != null) {
+
             BuildingID = bundle.getString("BuildingID");
             CustomerID = bundle.getString("CustomerID");
             ApplyID = bundle.getString("ApplyID");
+            ISDeal = bundle.getString("ISDeal");
             if (StringUtils.isEmpty(BuildingID)) {
                 BuildingID = "";
             }
@@ -97,6 +116,9 @@ public class ConfirmCustomDefinitionAty extends KJActivity {
             }
             if (StringUtils.isEmpty(ApplyID)) {
                 ApplyID = "";
+            }
+            if (StringUtils.isEmpty(ISDeal)) {
+                ISDeal = "";
             }
             HttpBusiness.getCustomDefineListHTTP(BuildingID, CustomerID, ApplyID, new CustomDefinetionHttpBusiness());
         }
@@ -126,9 +148,9 @@ public class ConfirmCustomDefinitionAty extends KJActivity {
 
                 case HttpBusiness.HTTP_KEY_DEFINETION_UPDATE:
                     if (isError) {
-                        toast("界定客户失败！");
+                        toast("界定审核失败！");
                     } else {
-                        toast("界定客户成功！");
+                        toast("界定审核成功！");
                         mHandler.postDelayed(new Runnable() {
                             @Override
                             public void run() {
@@ -144,11 +166,30 @@ public class ConfirmCustomDefinitionAty extends KJActivity {
     public void initView() {
         textview_confirm_phone.setText(mCustomerSeeInfo.Mobile);
         textview_confirm_name.setText(mCustomerSeeInfo.CustomerName);
-        textview_confirm_building.setText(mCustomerSeeInfo.RoomName);
+        textview_confirm_building.setText(mCustomerSeeInfo.BuildingName);
         textview_confirm_time.setText(mCustomerSeeInfo.LookTime);
-        textview_confirm_remarks.setText(mCustomerSeeInfo.CustomerDetails);
+        textview_confirm_remarks.setText(mCustomerSeeInfo.ApplyDetails);
         textview_confirm_applicants_time.setText(mCustomerSeeInfo.ApplyTime);
+        if(mCustomerSeeInfo.IsLook.equals("1")){
+            textview_shenhei_result.setText("有效");
+        }else{
+            textview_shenhei_result.setText("无效");
+        }
+        textview_shenhei_beizhu.setText(mCustomerSeeInfo.CustomerDetails);
 
+        if(ISDeal.equals("1")){
+            relativelayout_check.setVisibility(View.GONE);
+            relativelayout_show1.setVisibility(View.VISIBLE);
+            relativelayout_show2.setVisibility(View.VISIBLE);
+            btn_confirm_send.setVisibility(View.GONE);
+            linearlayout_popup_time.setEnabled(false);
+
+
+        }else{
+            relativelayout_check.setVisibility(View.VISIBLE);
+            relativelayout_show1.setVisibility(View.GONE);
+            relativelayout_show2.setVisibility(View.GONE);
+        }
         String applyName = "";
         String applyPhone = "";
         if(!StringUtils.isEmpty(mCustomerSeeInfo.ApplyName)){
@@ -188,7 +229,6 @@ public class ConfirmCustomDefinitionAty extends KJActivity {
         setTitileResId(R.layout.view_title_simple);
         setRootViewResId(R.layout.aty_confirm_custom_definition);
         setmBottomNavigation(BottomNavigation.JUSTNOBOTTOM);
-
 
         super.onCreate(savedInstanceState);
     }
@@ -279,10 +319,10 @@ public class ConfirmCustomDefinitionAty extends KJActivity {
             public void onCheckedChanged(RadioGroup group, int checkedId) {
                 if(R.id.radio_youxiao==checkedId){
                     isLook =1;
-                    edittext_remarks_add.setVisibility(View.GONE);
+ //                   edittext_remarks_add.setVisibility(View.GONE);
                 }else{
                     isLook =2;
-                    edittext_remarks_add.setVisibility(View.VISIBLE);
+ //                   edittext_remarks_add.setVisibility(View.VISIBLE);
                 }
             }
         });

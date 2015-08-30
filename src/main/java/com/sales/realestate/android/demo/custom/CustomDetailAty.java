@@ -101,6 +101,8 @@ public class CustomDetailAty extends KJActivity {
 
     @BindView(id = R.id.textview_custom_detail_way3)
     public TextView textview_custom_detail_way3;
+    @BindView(id = R.id.textview_custom_detail_way4)
+    public TextView textview_custom_detail_way4;
     @BindView(id = R.id.textview_custom_detail_time)
     public TextView textview_custom_detail_time;
     @BindView(id = R.id.textview_custom_detail_will)
@@ -182,6 +184,7 @@ public class CustomDetailAty extends KJActivity {
         textview_custom_detail_way1.setText("");
         textview_custom_detail_way2.setText("");
         textview_custom_detail_way3.setText("");
+        textview_custom_detail_way4.setText("");
         textview_custom_detail_time.setText("");
         textview_custom_detail_will.setText("");
         imageview_custom_detail_type.setClickable(false);
@@ -230,15 +233,16 @@ public class CustomDetailAty extends KJActivity {
                             textview_custom_detail_phone.setText(mCustomInfo.Mobile);
                             String[] tmp = mCustomInfo.FromAgentInfo.split("\\|");
                             if (tmp.length == 3) {
-                                textview_custom_detail_way1.setText(tmp[0]);
-                                textview_custom_detail_way2.setText(tmp[1]);
-                                textview_custom_detail_way3.setText(tmp[2]);
+                                textview_custom_detail_way1.setText(tmp[1]);
+                                textview_custom_detail_way2.setText(tmp[2]);
+                                textview_custom_detail_way4.setText(tmp[0]);
                             } if (tmp.length == 4) {
-                                textview_custom_detail_way1.setText(tmp[0]);
-                                textview_custom_detail_way2.setText(tmp[1]);
-                                textview_custom_detail_way3.setText(tmp[2]+tmp[3]);
+                                textview_custom_detail_way1.setText(tmp[1]);
+                                textview_custom_detail_way2.setText(tmp[3]);
+                                textview_custom_detail_way3.setText(tmp[2]);
+                                textview_custom_detail_way4.setText(tmp[0]);
                             } else {
-                                textview_custom_detail_way1.setText(mCustomInfo.FromAgentInfo);
+                                textview_custom_detail_way4.setText(mCustomInfo.FromAgentInfo);
                             }
                             textview_custom_detail_time.setText(mCustomInfo.AddTime);
                             textview_custom_detail_will.setText(mCustomInfo.CustomerThink);

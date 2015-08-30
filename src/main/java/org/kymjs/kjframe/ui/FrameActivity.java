@@ -64,7 +64,7 @@ public abstract class FrameActivity extends FragmentActivity implements
     }
 
     public static enum BottomNavigation {
-        HOME, NOBOTTOMSCROLL, JUSTNOSCROLL,JUSTNOBOTTOM
+        HOME, NOBOTTOMSCROLL, JUSTNOSCROLL,JUSTNOBOTTOM,ALL
     }
 
     public BottomNavigation mBottomNavigation = BottomNavigation.NOBOTTOMSCROLL;
@@ -206,6 +206,9 @@ public abstract class FrameActivity extends FragmentActivity implements
             LinearLayout bodyView2 = (LinearLayout) findViewById(R.id.linearlayout_body);
             switch (mBottomNavigation) {
 
+                case ALL :
+                    setContentView(ROOT_RES_ID);
+                    break;
                 case NOBOTTOMSCROLL:
                     bodyView.setVisibility(View.GONE);
                     bodyView2.setVisibility(View.VISIBLE);

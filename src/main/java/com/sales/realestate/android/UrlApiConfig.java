@@ -326,6 +326,7 @@ public class UrlApiConfig {
         params.put("EndTime", EndTime);
         params.put("PageIndex", PageIndex);
         params.put("DictID", DictID);
+        params.put("BuildingID", MainActivity.BuildingID);
         return params;
     }
 

@@ -237,13 +237,14 @@ public class ToDoListDetailAty extends KJActivity {
                 Bundle bundle = new Bundle();
                 if ((position - 1) >= 0) position--;
                 String  checkPoint1 = listViewList.get(position).IsExamine;
+                bundle.putString("ISDeal", "0");
                 if (!StringUtils.isEmpty(checkPoint1)){
                     if(!listViewList.get(position).IsExamine.equals("未审核")){
-                        return ;
+                        bundle.putString("ISDeal", "1");
                     }
                 }else{
                     if(listViewList.get(position).CustomerValid.equals("已处理")){
-                        return ;
+                        bundle.putString("ISDeal", "1");
                     }
                 }
 

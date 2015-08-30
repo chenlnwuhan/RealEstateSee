@@ -76,6 +76,21 @@ public class ConfirmCustomBuyAty extends KJActivity {
     @BindView(id = R.id.textview_confirm_buy_money)
     public EditText textview_confirm_buy_money;
 
+    @BindView(id = R.id.relativelayout_check)
+    public RelativeLayout relativelayout_check;
+    @BindView(id = R.id.relativelayout_show1)
+    public RelativeLayout relativelayout_show1;
+    @BindView(id = R.id.relativelayout_show2)
+    public RelativeLayout relativelayout_show2;
+
+    @BindView(id = R.id.textview_shenhei_result)
+    public TextView textview_shenhei_result;
+    @BindView(id = R.id.textview_shenhei_beizhu)
+    public TextView textview_shenhei_beizhu;
+    @BindView(id = R.id.img_confirm_building_dropdown)
+    public ImageView img_confirm_building_dropdown;
+
+
     @BindView(id = R.id.textview_confirm_propertyconsultant)
     public TextView textview_confirm_propertyconsultant;
     @BindView(id = R.id.textview_confirm_applicants_phone)
@@ -91,6 +106,7 @@ public class ConfirmCustomBuyAty extends KJActivity {
     private String BuildingID = "";
     private String CustomerID = "";
     private String ApplyID = "";
+    private String ISDeal = "";
     private int isLook = 1;
     private BuildSelectPW mBuildSelectPW = null;
     private CustomerSeeInfo mCustomerSeeInfo = new CustomerSeeInfo();
@@ -169,6 +185,29 @@ public class ConfirmCustomBuyAty extends KJActivity {
         textview_confirm_building.setText(mCustomerSeeInfo.RoomName);
         textview_confirm_time.setText(mCustomerSeeInfo.SetTime);
         textview_confirm_propertyconsultant.setText(mCustomerSeeInfo.ConsultantName);
+        if(mCustomerSeeInfo.IsLook.equals("1")){
+            textview_shenhei_result.setText("有效");
+        }else{
+            textview_shenhei_result.setText("无效");
+        }
+        textview_shenhei_beizhu.setText(mCustomerSeeInfo.SetDetails);
+
+        if(ISDeal.equals("1")){
+            relativelayout_check.setVisibility(View.GONE);
+            relativelayout_show1.setVisibility(View.VISIBLE);
+            relativelayout_show2.setVisibility(View.VISIBLE);
+            btn_confirm_send.setVisibility(View.GONE);
+            linearlayout_popup_time.setEnabled(false);
+            linerlayout_confirm_building.setEnabled(false);
+            img_confirm_building_dropdown.setVisibility(View.GONE);
+            textview_confirm_buy_money.setEnabled(false);
+
+        }else{
+            relativelayout_check.setVisibility(View.VISIBLE);
+            relativelayout_show1.setVisibility(View.GONE);
+            relativelayout_show2.setVisibility(View.GONE);
+        }
+
         String applyName = "";
         String applyPhone = "";
         if (!StringUtils.isEmpty(mCustomerSeeInfo.ApplyName)) {
@@ -182,7 +221,7 @@ public class ConfirmCustomBuyAty extends KJActivity {
         textview_confirm_applicants_phone.setText(applyPhone);
         textview_confirm_applicants_name.setText(applyName);
         textview_confirm_applicants_time.setText(mCustomerSeeInfo.ApplyTime);
-        textview_confirm_remarks.setText(mCustomerSeeInfo.SetDetails);
+        textview_confirm_remarks.setText(mCustomerSeeInfo.ApplyDetails);
         textview_confirm_buy_money.setText(mCustomerSeeInfo.SetMoney.replace("/元",""));
 
 
@@ -214,6 +253,7 @@ public class ConfirmCustomBuyAty extends KJActivity {
             BuildingID = bundle.getString("BuildingID");
             CustomerID = bundle.getString("CustomerID");
             ApplyID = bundle.getString("ApplyID");
+            ISDeal = bundle.getString("ISDeal");
             if (StringUtils.isEmpty(BuildingID)) {
                 BuildingID = "";
             }
@@ -222,6 +262,9 @@ public class ConfirmCustomBuyAty extends KJActivity {
             }
             if (StringUtils.isEmpty(ApplyID)) {
                 ApplyID = "";
+            }
+            if (StringUtils.isEmpty(ISDeal)) {
+                ISDeal = "";
             }
             HttpBusiness.getCustomBuy(BuildingID, CustomerID, ApplyID, new ToDoListDetailHttpBusiness());
 
@@ -251,10 +294,10 @@ public class ConfirmCustomBuyAty extends KJActivity {
 
                 case HttpBusiness.HTTP_KEY_UPDATE_CUSTOM_BUY:
                     if (isError) {
-                        toast("界定客户认购失败！");
+                        toast("认购审核失败！");
 
                     } else {
-                        toast("界定客户认购成功！");
+                        toast("认购审核成功！");
                         mHandler.postDelayed(new Runnable() {
 
                             @Override

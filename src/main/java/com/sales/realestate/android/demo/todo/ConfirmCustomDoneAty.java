@@ -101,6 +101,20 @@ public class ConfirmCustomDoneAty extends KJActivity {
     private String CustomerID = "";
     private String ApplyID = "";
     private int isLook = 1;
+    private String ISDeal = "";
+    @BindView(id = R.id.relativelayout_check)
+    public RelativeLayout relativelayout_check;
+    @BindView(id = R.id.relativelayout_show1)
+    public RelativeLayout relativelayout_show1;
+    @BindView(id = R.id.relativelayout_show2)
+    public RelativeLayout relativelayout_show2;
+
+    @BindView(id = R.id.textview_shenhei_result)
+    public TextView textview_shenhei_result;
+    @BindView(id = R.id.textview_shenhei_beizhu)
+    public TextView textview_shenhei_beizhu;
+    @BindView(id = R.id.img_confirm_building_dropdown)
+    public ImageView img_confirm_building_dropdown;
     private CustomerSeeInfo mCustomerSeeInfo = new CustomerSeeInfo();
 
     @Override
@@ -120,6 +134,30 @@ public class ConfirmCustomDoneAty extends KJActivity {
         textview_confirm_time.setText(mCustomerSeeInfo.OkTime);
         textview_confirm_propertyconsultant.setText(mCustomerSeeInfo.ConsultantName);
         textview_confirm_pay.setText("0");
+        if(mCustomerSeeInfo.IsOk.equals("1")){
+            textview_shenhei_result.setText("有效");
+        }else{
+            textview_shenhei_result.setText("无效");
+        }
+        textview_shenhei_beizhu.setText(mCustomerSeeInfo.OkDetails);
+
+        if(ISDeal.equals("1")){
+            relativelayout_check.setVisibility(View.GONE);
+            relativelayout_show1.setVisibility(View.VISIBLE);
+            relativelayout_show2.setVisibility(View.VISIBLE);
+            btn_confirm_send.setVisibility(View.GONE);
+            linearlayout_popup_time.setEnabled(false);
+            linerlayout_confirm_building.setEnabled(false);
+            img_confirm_building_dropdown.setVisibility(View.GONE);
+            textview_confirm_buy_money.setEnabled(false);
+            textview_confirm_pay.setText(mCustomerSeeInfo.CommissionValue.replace("/元", ""));
+            textview_confirm_pay.setEnabled(false);
+        }else{
+            relativelayout_check.setVisibility(View.VISIBLE);
+            relativelayout_show1.setVisibility(View.GONE);
+            relativelayout_show2.setVisibility(View.GONE);
+        }
+
         String applyName = "";
         String applyPhone = "";
         if (!StringUtils.isEmpty(mCustomerSeeInfo.ApplyName)) {
@@ -133,7 +171,7 @@ public class ConfirmCustomDoneAty extends KJActivity {
         textview_confirm_applicants_phone.setText(applyPhone);
         textview_confirm_applicants_name.setText(applyName);
         textview_confirm_applicants_time.setText(mCustomerSeeInfo.ApplyTime);
-        textview_confirm_remarks.setText(mCustomerSeeInfo.OkDetails);
+        textview_confirm_remarks.setText(mCustomerSeeInfo.ApplyDetails);
         textview_confirm_buy_money.setText(mCustomerSeeInfo.OkMoney.replace("/元",""));
         btn_confirm_send.setOnClickListener(new OnClickListener() {
 
@@ -167,6 +205,7 @@ public class ConfirmCustomDoneAty extends KJActivity {
             BuildingID = bundle.getString("BuildingID");
             CustomerID = bundle.getString("CustomerID");
             ApplyID = bundle.getString("ApplyID");
+            ISDeal = bundle.getString("ISDeal");
             if (StringUtils.isEmpty(BuildingID)) {
                 BuildingID = "";
             }
@@ -203,10 +242,10 @@ public class ConfirmCustomDoneAty extends KJActivity {
 
                 case HttpBusiness.HTTP_KEY_UPDATE_CUSTOM_DONE:
                     if (isError) {
-                        toast("界定客户成交失败！");
+                        toast("成交审核失败！");
 
                     } else {
-                        toast("界定客户成交成功！");
+                        toast("成交审核成功！");
                         mHandler.postDelayed(new Runnable() {
 
                             @Override

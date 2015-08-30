@@ -69,7 +69,7 @@ public class CustomDistributionPW extends PopupWindow {
                         AppContext.getCurrentActivity().toast("客户分配失败！");
                     } else {
                         try {
-                            AppContext.getCurrentActivity().toast("客户分配成功！");
+                            AppContext.getCurrentActivity().toast("分配成功！");
                             textview_custom_distribution_cancel.setClickable(false);
                             textview_custom_distribution_ok.setClickable(false);
                             mHandler.postDelayed(mRunnable, GlobalVarible.GLOBALDELAY);

@@ -524,7 +524,7 @@ public class CustomAty extends KJActivity {
                                 GlobalVarible.initPageObject(listViewCustomList, mCustomJson.customList, myPageIndex);
                             }
                             adapterCustomList.notifyDataSetChanged();
-                            GlobalVarible.initTitleListFocus(listViewTitleList, "(" + mCustomJson.totalCount + ")");
+                            GlobalVarible.initTitleListFocus(listViewTitleList, "(" + mCustomJson.totalCount + ")",customType);
                             GlobalVarible.initTitleListFocus(listViewTitleList, -1, customType);
                             adapterTitleList.notifyDataSetChanged();
                             initTitle("(" + mCustomJson.totalCount + ")");
@@ -636,9 +636,6 @@ public class CustomAty extends KJActivity {
                     initTitle(position);
                     GlobalVarible.initTitleListFocus(listViewTitleList, -1, position);
                     customType = listViewTitleList.get(position).id;
-                    if (customType.equals("0")) {
-                        customType = "";
-                    }
                     myPageIndex = 1;
                     HttpBusiness.getCustomSearch(myPageIndex + "", propertyId, customType, BuildingID, "", "", "", "", new CustomHttpBusiness());
                 }

@@ -120,7 +120,7 @@ public class CustomFormPW extends PopupWindow {
                         AppContext.getCurrentActivity().toast("认筹确认失败！");
                     } else {
                         try {
-                            AppContext.getCurrentActivity().toast("认筹确认成功！");
+                            AppContext.getCurrentActivity().toast("认筹成功！");
                             textview_custom_distribution_cancel.setClickable(false);
                             textview_custom_distribution_ok.setClickable(false);
                             mHandler.postDelayed(mRunnable, GlobalVarible.GLOBALDELAY);

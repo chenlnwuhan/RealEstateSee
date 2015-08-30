@@ -146,7 +146,7 @@ public class CustomBuyPW extends PopupWindow {
                         AppContext.getCurrentActivity().toast("认购确认失败！");
                     } else {
                         try {
-                            AppContext.getCurrentActivity().toast("认购确认成功！");
+                            AppContext.getCurrentActivity().toast("认购成功！");
                             textview_custom_distribution_cancel.setClickable(false);
                             textview_custom_distribution_ok.setClickable(false);
                             mHandler.postDelayed(mRunnable, GlobalVarible.GLOBALDELAY);
@@ -235,9 +235,9 @@ public class CustomBuyPW extends PopupWindow {
                 } else {
                     if (buyType == 1) {
 
-                        HttpBusiness.getCustomBuyApply(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, roomName, edittext_pupup_money.getText().toString(),new CustomBuyHttpBusiness());
+                        HttpBusiness.getCustomBuyApply(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, textview_popup_buildno.getText().toString(), edittext_pupup_money.getText().toString(),new CustomBuyHttpBusiness());
                     } else {
-                        HttpBusiness.getCustomBuyConfirm(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, roomName,edittext_pupup_money.getText().toString(), new CustomBuyHttpBusiness());
+                        HttpBusiness.getCustomBuyConfirm(CustomAty.BuildingID, edittext_remarks_add.getText().toString(), textview_popup_time.getText().toString(), selectCustomList.get(0).CustomerID, roomID, textview_popup_buildno.getText().toString(),edittext_pupup_money.getText().toString(), new CustomBuyHttpBusiness());
                     }
                 }
             }

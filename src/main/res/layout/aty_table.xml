@@ -86,7 +86,7 @@
                 android:layout_gravity="center_vertical"
                 android:background="#bdbdbd"
                 android:gravity="center"
-                android:text="成交率"
+                android:text="带看成交率"
                 android:textColor="#eb4a3f"
                 android:textSize="15sp" />
 

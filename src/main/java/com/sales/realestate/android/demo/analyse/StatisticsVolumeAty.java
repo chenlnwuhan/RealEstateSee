@@ -143,8 +143,12 @@ public class StatisticsVolumeAty extends KJActivity {
                     if (isError) {
                         toast("成交客户列表未读取！");
                     } else {
+                        if (errorMessage.equals("NoData")) {
+                            return;
+                        }
                         Gson gson = new Gson();
                         try {
+
                             CustomJson mCustomJson = gson.fromJson(returnStr, CustomJson.class);
                             if (myPageIndex == 1) {
                                 thisCustomList = mCustomJson.Deallist;

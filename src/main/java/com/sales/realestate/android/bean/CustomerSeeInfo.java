@@ -17,6 +17,8 @@ public class CustomerSeeInfo extends JsonInfo {
 	public String NewsHouseID = "";
 	public String RenChouMoney = "";
 	public String RoomName = "";
+	public String ApplyDetails = "";
+	public String CommissionValue = "";
 
 	
 //	{"CustomerID":70,"CustomerName":"大中华4","Mobile":"15682356362","SetTime":"2015-08-03",

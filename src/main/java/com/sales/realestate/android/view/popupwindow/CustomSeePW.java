@@ -120,7 +120,7 @@ public class CustomSeePW extends PopupWindow {
                         AppContext.getCurrentActivity().toast("确认带看失败！");
                     } else {
                         try {
-                            AppContext.getCurrentActivity().toast("确认带看成功！");
+                            AppContext.getCurrentActivity().toast("带看成功！");
                             textview_custom_distribution_cancel.setClickable(false);
                             textview_custom_distribution_ok.setClickable(false);
                             mHandler.postDelayed(mRunnable, GlobalVarible.GLOBALDELAY);
