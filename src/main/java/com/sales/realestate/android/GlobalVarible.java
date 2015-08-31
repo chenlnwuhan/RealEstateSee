@@ -584,7 +584,115 @@ public class GlobalVarible {
     }
 
     public static List<HouseInfo> getHouseList() {
-        return HOUSE_LIST;
+        Collections.sort(HOUSE_LIST, new Comparator<HouseInfo>() {
+            public int compare(HouseInfo arg0, HouseInfo arg1) {
+                if(Integer.valueOf(arg0.Ceng)<Integer.valueOf(arg1.Ceng))return -1;
+                if(Integer.valueOf(arg0.Ceng)>Integer.valueOf(arg1.Ceng))return 1;
+                return arg0.RoomName.compareTo(arg1.RoomName);
+            }
+        });
+        /**
+         * 拆分很简单
+         * 横排合并很简单，竖排合并需要计算
+         */
+        ArrayList<HouseInfo> supaihebin = new ArrayList<HouseInfo>();
+        int maxChaifengNumber = 0;
+        int realLouIndex = 0 ;
+        /**
+         * 拆分会记录当前的id
+         */
+        HouseInfo chaifengHouse = null;
+        HouseInfo henpaihebinHouse = null;
+        String lc = "";
+        List<HouseInfo> curList = new ArrayList<HouseInfo>();
+        for (int i = 0; i < HOUSE_LIST.size(); i++) {
+            HouseInfo info = HOUSE_LIST.get(i);
+            if (!lc.equals(info.Ceng)) {
+                realLouIndex = 0 ;
+                lc = info.Ceng;
+                List<HouseInfo> lastList = curList;
+                if (lastList != null) {
+ //                   clList.add(lastList);
+                }
+ //               curList = new ArrayList<HouseInfo>();
+            } else {
+                if (i == (HOUSE_LIST.size() - 1)) {
+                    List<HouseInfo> lastList = curList;
+ //                   clList.add(lastList);
+                }
+            }
+            realLouIndex++;
+            /**
+             * 拆分
+             * 需要记录最大拆分数目这样可以动态算出最小的格的大小
+             */
+            if ("2".equals(info.HouseType)) {
+                maxChaifengNumber = 0;
+                chaifengHouse = info;
+                continue;
+
+            } else if ("1".equals(info.HouseType)) {
+                String[] dels = info.HouseTypeName.split("-");
+                //横排合并，如果前面已经有了，会自动过滤
+                if ("1".equals(dels[1])) {
+                    if (henpaihebinHouse != null) {
+                        if (henpaihebinHouse.HouseTypeName.indexOf(dels[0]) >= 0) {
+                            continue;
+                        }
+                    }
+                    info.number = dels[2];
+                    info.houseType = "3";
+                    henpaihebinHouse = info;
+                } else if ("2".equals(dels[1])) {
+                    boolean isHebinByOthers = false;
+                    /**
+                     * 竖排的合并会跨排
+                     * 所以要记录所有的竖排房源
+                     * 如果发现后面的竖排房源中在list中有了这个房子，则过滤这个房源
+                     */
+                    for (int k = 0; k < supaihebin.size(); k++) {
+                        if (supaihebin.get(k).HouseTypeName.indexOf(dels[0]) >= 0) {
+                            isHebinByOthers = true;
+                            break;
+                        }
+                    }
+                    if (isHebinByOthers) {
+                        continue;
+                    }
+                    info.number = dels[2];
+                    info.houseType = "4";
+                    supaihebin.add(info);
+                }
+            } else if (!info.ParentID.equals("0")) {
+                realLouIndex--;
+                if (chaifengHouse != null) {
+                    if (info.ParentID.equals(chaifengHouse.NewsHouseID)) {
+                        chaifengHouse.subList.add(info);
+                        maxChaifengNumber++;
+                        info.houseType = "2";
+                        info.number = maxChaifengNumber + "";
+                        for (int h = 0; h < maxChaifengNumber; h++) {
+                            int beIndex = i - h;
+                            if (beIndex > 0) {
+ //                               list.get(beIndex).number = maxChaifengNumber + "";
+ //                               list.get(beIndex).subLouIndex = maxChaifengNumber-h;
+                            }
+
+                        }
+//                        if (maxChaifengNumber > chaifengNumber) {
+//                            chaifengNumber = maxChaifengNumber;
+//                        }
+                    }
+                }
+            } else {
+                henpaihebinHouse = null;
+                chaifengHouse = null;
+
+            }
+            info.realLouIndex = realLouIndex;
+            curList.add(info);
+        }
+        return curList;
     }
 
     public static void setHouseList(List<HouseInfo> houseList) {
@@ -657,6 +765,8 @@ public class GlobalVarible {
                     if(i == list.size() -1) {
                         Collections.sort(houses, new Comparator<HouseInfo>() {
                             public int compare(HouseInfo arg0, HouseInfo arg1) {
+                                if(Integer.valueOf(arg0.Ceng)<Integer.valueOf(arg1.Ceng))return -1;
+                                if(Integer.valueOf(arg0.Ceng)>Integer.valueOf(arg1.Ceng))return 1;
                                 return arg0.RoomName.compareTo(arg1.RoomName);
                             }
                         });
@@ -666,6 +776,8 @@ public class GlobalVarible {
                     if(houses != null) {
                         Collections.sort(houses, new Comparator<HouseInfo>() {
                             public int compare(HouseInfo arg0, HouseInfo arg1) {
+                                if(Integer.valueOf(arg0.Ceng)<Integer.valueOf(arg1.Ceng))return -1;
+                                if(Integer.valueOf(arg0.Ceng)>Integer.valueOf(arg1.Ceng))return 1;
                                 return arg0.RoomName.compareTo(arg1.RoomName);
                             }
                         });

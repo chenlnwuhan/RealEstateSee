@@ -24,5 +24,6 @@
     <dimen name="custom_follow_mini">114dp</dimen>
     <dimen name="spinner_height">30dp</dimen>
     <dimen name="build_listview_height">50dp</dimen>
+    <dimen name="login_height">100dp</dimen>
 
 </resources>

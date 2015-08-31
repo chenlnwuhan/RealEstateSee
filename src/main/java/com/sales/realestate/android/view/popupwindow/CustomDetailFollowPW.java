@@ -92,6 +92,7 @@ public class CustomDetailFollowPW extends PopupWindow {
             GlobalVarible.initTitleListFocus(spinnerObjectArrayList, -1, 0);
             textview_follow_type.setText(spinnerObjectArrayList.get(0).getName());
             edittext_remarks_add.setText("");
+            textview_custom_distribution_ok.setVisibility(View.VISIBLE);
             seletctFollowType = spinnerObjectArrayList.get(0).getId();
         } else {
             mcustomInfo.reflashType = 0;
@@ -101,7 +102,7 @@ public class CustomDetailFollowPW extends PopupWindow {
             linearlayout_popup_time.setClickable(false);
             textview_popup_time.setText(mFollowDetailInfo.AddTime);
             GlobalVarible.initTitleListFocus(spinnerObjectArrayList, -1, mFollowDetailInfo.FollowTypeName);
-
+            textview_custom_distribution_ok.setVisibility(View.GONE);
             textview_follow_type.setText(mFollowDetailInfo.FollowTypeName);
             edittext_remarks_add.setText(mFollowDetailInfo.Details);
         }

@@ -1,19 +1,5 @@
 package com.sales.realestate.android.demo;
 
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Map.Entry;
-
-import org.kymjs.kjframe.KJActivity;
-import org.kymjs.kjframe.ui.BindView;
-import org.kymjs.kjframe.utils.StringUtils;
-
 import android.app.ActionBar;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
@@ -45,6 +31,18 @@ import com.sales.realestate.android.view.popupwindow.SaleBuildSelect1PW;
 import com.sales.realestate.android.view.popupwindow.SaleBuildSelect2PW;
 import com.sales.realestate.android.view.popupwindow.SaleControlPW;
 
+import org.kymjs.kjframe.KJActivity;
+import org.kymjs.kjframe.ui.BindView;
+import org.kymjs.kjframe.utils.StringUtils;
+
+import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Map.Entry;
+
 /**
  * Created by chenlin on 2015/7/20.
  */
@@ -55,24 +53,25 @@ public class SaleAty extends KJActivity {
     @BindView(id = R.id.title_name)
     public TextView textViewTitle;
 
-    public  int layoutTitleWidth = GlobalVarible.SCRREN_WIDTH / 29 * 5;
-    public  int layoutWidth = (GlobalVarible.SCRREN_WIDTH - layoutTitleWidth) / 4;
-    public  int layoutHigh = (int) (layoutWidth * 0.7);
-    public  int divWidth = 0;
+    public int layoutTitleWidth = GlobalVarible.SCRREN_WIDTH / 29 * 5;
+    public int layoutWidth = (GlobalVarible.SCRREN_WIDTH - layoutTitleWidth) / 4;
+    public int layoutHigh = (int) (layoutWidth * 0.7);
+    public int chaifengNumber = 1;
+    public int divWidth = 0;
 
     private SaleBuildSelect2PW mSaleBuildSelect2PW = null;
     private SaleBuildSelect1PW mSaleBuildSelect1PW = null;
-    private SaleControlPW mSaleControlPW = null ;
+    private SaleControlPW mSaleControlPW = null;
 
 
-    @BindView(id = R.id.relativelayout_sale_build_title,click = true)
+    @BindView(id = R.id.relativelayout_sale_build_title, click = true)
     public RelativeLayout relativelayout_sale_build_title;
     @BindView(id = R.id.textview_sale_build_title)
     public TextView textview_sale_build_title;
     @BindView(id = R.id.image_sale_build_title)
     public ImageView image_sale_build_title;
 
-    @BindView(id = R.id.relativelayout_sale_unit_title,click = true)
+    @BindView(id = R.id.relativelayout_sale_unit_title, click = true)
     public RelativeLayout relativelayout_sale_unit_title;
     @BindView(id = R.id.textview_sale_unit_title)
     public TextView textview_sale_unit_title;
@@ -106,19 +105,21 @@ public class SaleAty extends KJActivity {
     @BindView(id = R.id.bottom_menu_text_sale)
     public TextView bottom_menu_text_more;
 
-    public BuildJson mBuildJson ;
+    public BuildJson mBuildJson;
     private SailHouseDetail mBuildJson2;
-    
+
     public String buildId = "";
     public BuildingUnitInfo buildinfo = new BuildingUnitInfo();
-    public Map<String,List<BuildingUnitInfo>>  unitList = new HashMap<String, List<BuildingUnitInfo>>();
-    public Map<BuildingUnitInfo,List<HouseInfo>>  houseList = new HashMap<BuildingUnitInfo,List<HouseInfo>>();
-    public Handler handler = new  Handler();
+    public Map<String, List<BuildingUnitInfo>> unitList = new HashMap<String, List<BuildingUnitInfo>>();
+    public Map<BuildingUnitInfo, List<HouseInfo>> houseList = new HashMap<BuildingUnitInfo, List<HouseInfo>>();
+    public Handler handler = new Handler();
+
     @Override
     public void initBottomNavagation() {
         bottom_menu_img_more.setImageResource(R.drawable.pic_bottom_sale_foucs);
         bottom_menu_text_more.setTextColor(this.getResources().getColor(R.color.bottom_navigation_text_color_foucs));
     }
+
     public class SaleHttpBusiness extends HttpBusiness.MyCallBack {
         @Override
         public void onSuccess(int uid, String returnStr) {
@@ -130,12 +131,11 @@ public class SaleAty extends KJActivity {
                     } else {
                         Gson gson = new Gson();
                         try {
-                            FileUtils.writeFile(org.kymjs.kjframe.utils.FileUtils.getSDCardPath() + File.separator + "1.txt", returnStr);
                             mBuildJson = gson.fromJson(returnStr, BuildJson.class);
                             unitList = GlobalVarible.findUnitList(mBuildJson.edList);
                             houseList = GlobalVarible.getUnitHouseList(mBuildJson.enList);
-                            if(!StringUtils.isEmpty(buildinfo.Dan) && !StringUtils.isEmpty(buildinfo.Dong)) {
-                            	dealHouseList();
+                            if (!StringUtils.isEmpty(buildinfo.Dan) && !StringUtils.isEmpty(buildinfo.Dong)) {
+                                dealHouseList();
                             }
                         } catch (Exception e) {
                             toast("销控列表解析错误！");
@@ -148,8 +148,9 @@ public class SaleAty extends KJActivity {
                     } else {
                         Gson gson = new Gson();
                         try {
-                            List<SailHouseDetail> ps = gson.fromJson(returnStr, new TypeToken<List<SailHouseDetail>>(){}.getType());
-                            if(ps==null||ps.size()==0){
+                            List<SailHouseDetail> ps = gson.fromJson(returnStr, new TypeToken<List<SailHouseDetail>>() {
+                            }.getType());
+                            if (ps == null || ps.size() == 0) {
                                 toast("房屋详情为空！");
                             }
                             mBuildJson2 = ps.get(0);
@@ -166,7 +167,7 @@ public class SaleAty extends KJActivity {
                         Gson gson = new Gson();
                         try {
                             House2Json mHouse2Json = gson.fromJson(returnStr, House2Json.class);
-                            if(mHouse2Json.nhdList==null||mHouse2Json.nhdList.size()==0){
+                            if (mHouse2Json.nhdList == null || mHouse2Json.nhdList.size() == 0) {
                                 toast("房屋详情为空！");
                             }
                             mBuildJson2 = mHouse2Json.nhdList.get(0);
@@ -178,7 +179,8 @@ public class SaleAty extends KJActivity {
                     break;
             }
         }
-    }   
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         setActivityActionMode(ActionBarMode.CUSTOMTITILE);
@@ -196,15 +198,16 @@ public class SaleAty extends KJActivity {
 
 //        showldView(GlobalVarible.getHouseTest());
     }
+
     @Override
     protected void onStart() {
         super.onStart();
         buildId = MainActivity.BuildingID;
-            if (!StringUtils.isEmpty(buildId)) {
-                HttpBusiness.getSalesListHttp(buildId, new SaleHttpBusiness());
-                textview_sale_build_title.setText(MainActivity.BuildingName);
+        if (!StringUtils.isEmpty(buildId)) {
+            HttpBusiness.getSalesListHttp(buildId, new SaleHttpBusiness());
+            textview_sale_build_title.setText(MainActivity.BuildingName);
         }
-        if(GlobalVarible.ROLE_ID.equals(CommomKey.ROLE_TYPE_PROPERTY)){
+        if (GlobalVarible.ROLE_ID.equals(CommomKey.ROLE_TYPE_PROPERTY)) {
             navigationSale.setVisibility(View.GONE);
         }
     }
@@ -235,11 +238,11 @@ public class SaleAty extends KJActivity {
                     mSaleBuildSelect1PW.setOnDismissListener(new PopupWindow.OnDismissListener() {
                         @Override
                         public void onDismiss() {
-                        	if (!mSaleBuildSelect1PW.buildId.equals(buildId)||true) {
-                        		buildId = mSaleBuildSelect1PW.buildId;
-                        		textview_sale_build_title.setText(mSaleBuildSelect1PW.buildName);
-                        		HttpBusiness.getSalesListHttp(buildId, new SaleHttpBusiness());
-                        	}
+                            if (!mSaleBuildSelect1PW.buildId.equals(buildId) || true) {
+                                buildId = mSaleBuildSelect1PW.buildId;
+                                textview_sale_build_title.setText(mSaleBuildSelect1PW.buildName);
+                                HttpBusiness.getSalesListHttp(buildId, new SaleHttpBusiness());
+                            }
                         }
                     });
                 }
@@ -248,25 +251,25 @@ public class SaleAty extends KJActivity {
                 break;
             case R.id.relativelayout_sale_unit_title:
 //                if (mSaleBuildSelect2PW == null) {
-                if(unitList == null ||unitList.size() == 0) {
+                if (unitList == null || unitList.size() == 0) {
                     toast("请先选择楼盘！");
                     return;
                 }
-                    mSaleBuildSelect2PW = new SaleBuildSelect2PW(this);
-                    mSaleBuildSelect2PW.setBackgroundDrawable(new BitmapDrawable());
-                    mSaleBuildSelect2PW.setBuyType(1);
-                    mSaleBuildSelect2PW.setHeight(ActionBar.LayoutParams.WRAP_CONTENT);
-                    mSaleBuildSelect2PW.setspinnerList(unitList);
-                    mSaleBuildSelect2PW.setOnDismissListener(new PopupWindow.OnDismissListener() {
-                        @Override
-                        public void onDismiss() {                        	
-                        	buildinfo = mSaleBuildSelect2PW.info;
-                        	if(!StringUtils.isEmpty(buildinfo.DanName) && !StringUtils.isEmpty(buildinfo.Dong)) {
-                        		textview_sale_unit_title.setText(buildinfo.Dong+"栋"+buildinfo.DanName);
-                        		dealHouseList();
-                        	}
+                mSaleBuildSelect2PW = new SaleBuildSelect2PW(this);
+                mSaleBuildSelect2PW.setBackgroundDrawable(new BitmapDrawable());
+                mSaleBuildSelect2PW.setBuyType(1);
+                mSaleBuildSelect2PW.setHeight(ActionBar.LayoutParams.WRAP_CONTENT);
+                mSaleBuildSelect2PW.setspinnerList(unitList);
+                mSaleBuildSelect2PW.setOnDismissListener(new PopupWindow.OnDismissListener() {
+                    @Override
+                    public void onDismiss() {
+                        buildinfo = mSaleBuildSelect2PW.info;
+                        if (!StringUtils.isEmpty(buildinfo.DanName) && !StringUtils.isEmpty(buildinfo.Dong)) {
+                            textview_sale_unit_title.setText(buildinfo.Dong + "栋" + buildinfo.DanName);
+                            dealHouseList();
                         }
-                    });
+                    }
+                });
 //                }
                 mSaleBuildSelect2PW.showAsDropDown(first_LinearLayout, 0, 1);
                 break;
@@ -277,43 +280,111 @@ public class SaleAty extends KJActivity {
         if (list == null || list.size() <= 0) {
             return;
         }
+        /**
+         * 拆分很简单
+         * 横排合并很简单，竖排合并需要计算
+         */
+        ArrayList<HouseInfo> supaihebin = new ArrayList<HouseInfo>();
+        int maxChaifengNumber = 0;
+        int realLouIndex = 0 ;
+        /**
+         * 拆分会记录当前的id
+         */
+        HouseInfo chaifengHouse = null;
+        HouseInfo henpaihebinHouse = null;
         lcList.removeAllViews();
         ldList.removeAllViews();
         String lc = "";
         List<HouseInfo> curList = null;
-        for (int i = list.size()-1; i >= 0; i--) {
+        for (int i = 0; i < list.size(); i++) {
             HouseInfo info = list.get(i);
             if (!lc.equals(info.Ceng)) {
+                realLouIndex = 0 ;
                 lc = info.Ceng;
                 List<HouseInfo> lastList = curList;
                 if (lastList != null) {
                     clList.add(lastList);
                 }
                 curList = new ArrayList<HouseInfo>();
-            }else{
-                if(i==(list.size()-1)){
+            } else {
+                if (i == (list.size() - 1)) {
                     List<HouseInfo> lastList = curList;
                     clList.add(lastList);
                 }
             }
-            if ("1".equals(info.HouseType)) {
+            realLouIndex++;
+            /**
+             * 拆分
+             * 需要记录最大拆分数目这样可以动态算出最小的格的大小
+             */
+            if ("2".equals(info.HouseType)) {
+                maxChaifengNumber = 0;
+                chaifengHouse = info;
+                continue;
+
+            } else if ("1".equals(info.HouseType)) {
                 String[] dels = info.HouseTypeName.split("-");
+                //横排合并，如果前面已经有了，会自动过滤
                 if ("1".equals(dels[1])) {
-                    int total = Integer.valueOf(dels[2]);
-                    for (int j = 1; j < total; j++) {
-                        HouseInfo nullinfo = new HouseInfo();
-                        nullinfo.Ceng = info.Ceng;
-                        curList.add(nullinfo);
+                    if (henpaihebinHouse != null) {
+                        if (henpaihebinHouse.HouseTypeName.indexOf(dels[0]) >= 0) {
+                            continue;
+                        }
+                    }
+                    info.number = dels[2];
+                    info.houseType = "3";
+                    henpaihebinHouse = info;
+                } else if ("2".equals(dels[1])) {
+                    boolean isHebinByOthers = false;
+                    /**
+                     * 竖排的合并会跨排
+                     * 所以要记录所有的竖排房源
+                     * 如果发现后面的竖排房源中在list中有了这个房子，则过滤这个房源
+                     */
+                    for (int k = 0; k < supaihebin.size(); k++) {
+                        if (supaihebin.get(k).HouseTypeName.indexOf(dels[0]) >= 0) {
+                            isHebinByOthers = true;
+                            break;
+                        }
+                    }
+                    if (isHebinByOthers) {
+                        continue;
+                    }
+                    info.number = dels[2];
+                    info.houseType = "4";
+                    supaihebin.add(info);
+                }
+            } else if (!info.ParentID.equals("0")) {
+                realLouIndex--;
+                if (chaifengHouse != null) {
+                    if (info.ParentID.equals(chaifengHouse.NewsHouseID)) {
+                        chaifengHouse.subList.add(info);
+                        maxChaifengNumber++;
+                        info.houseType = "2";
+                        info.number = maxChaifengNumber + "";
+                        for (int h = 0; h < maxChaifengNumber; h++) {
+                            int beIndex = i - h;
+                            if (beIndex > 0) {
+                                list.get(beIndex).number = maxChaifengNumber + "";
+                                list.get(beIndex).subLouIndex = maxChaifengNumber-h;
+                            }
+
+                        }
+                        if (maxChaifengNumber > chaifengNumber) {
+                            chaifengNumber = maxChaifengNumber;
+                        }
                     }
                 }
-            }else if("1".equals(info.HouseType)){
+            } else {
+                henpaihebinHouse = null;
+                chaifengHouse = null;
 
             }
+            info.realLouIndex = realLouIndex;
             curList.add(info);
-
         }
 
-        for (int i = 0; i < clList.size(); i++) {
+        for (int i = clList.size() - 1; i >= 0; i--) {
             List<HouseInfo> lastList = clList.get(i);
             for (int j = 0; j < lastList.size(); j++) {
                 HouseInfo info = lastList.get(j);
@@ -333,7 +404,7 @@ public class SaleAty extends KJActivity {
                     lcList.addView(tv);
                 }
                 if (info.NewsHouseID != null) {
-                    ldList.addView(drawTextView(info, i, j));
+                    ldList.addView(drawTextView(info, clList.size()-i));
                 }
             }
 
@@ -343,35 +414,28 @@ public class SaleAty extends KJActivity {
     }
 
     private List<List<HouseInfo>> clList = new ArrayList<List<HouseInfo>>();
-    private TextView drawTextView(final HouseInfo info, int lc, int dan) {
+
+    private TextView drawTextView(final HouseInfo info, int lc) {
 
         TextView tv = new TextView(this);
         int high = layoutHigh;
         int width = layoutWidth;
         RelativeLayout.LayoutParams tvParams;
-        int top = (lc) * (layoutHigh + divWidth);
-        int left = (dan) * (layoutWidth + divWidth);
-        if ("1".equals(info.HouseType)) {
-            String[] dels = info.HouseTypeName.split("-");
-            if ("1".equals(dels[1])) {
-                width = layoutWidth * (Integer.valueOf(dels[2])) + (Integer.valueOf(dels[2]) - 1) * divWidth;
-//				tv.setBackgroundResource(R.drawable.shape_edittext_border);
-
-                //			tv.setBackground(getResources().getDrawable(R.drawable.shape_edittext_border));
-            } else {
-                high = layoutHigh * (Integer.valueOf(dels[2])) + (Integer.valueOf(dels[2]) - 1) * divWidth;
-                if (lc < clList.size() - 1) {
-                    for (int i = 1; i < Integer.valueOf(dels[2]); i++) {
-                        if (lc + i < clList.size() - 1) {
-                            HouseInfo nullinfo = new HouseInfo();
-                            nullinfo.Ceng = clList.get(lc + i).get(0).Ceng;
-                            clList.get(lc + i).add(dan, nullinfo);
-                        }
-                    }
-                }
+        int top = (lc-1) * (layoutHigh + divWidth);
+        int left = (info.realLouIndex-1) * (layoutWidth + divWidth);
+        if ("2".equals(info.houseType)) {
+            width = layoutWidth/Integer.valueOf(info.number);
+            left += width*(info.subLouIndex-1);
+            if(info.subLouIndex==Integer.valueOf(info.number)){
+                width = layoutWidth - width*(info.subLouIndex-1);
             }
-        } else {
-//    		tv.setBackgroundColor(Color.RED);
+
+        }else if("3".equals(info.houseType)) {
+            width = layoutWidth*Integer.valueOf(info.number);
+        }else if("4".equals(info.houseType)) {
+            top = top-layoutHigh*(Integer.valueOf(info.number)-1);
+            high = layoutHigh*Integer.valueOf(info.number);
+
         }
         tvParams = new RelativeLayout.LayoutParams(width, high);
         tvParams.setMargins(left, top, 0, 0);
@@ -398,17 +462,17 @@ public class SaleAty extends KJActivity {
          * 5  已售信息(5)
          * 6  预留(3) 做解锁
          */
-        int type = 0 ;
-        if(info.IsSell.equals("0")) type = 1 ;
-        if(info.IsSell.equals("1")) type = 4 ;
-        if(info.IsSell.equals("2")||info.IsSell.equals("4")) type = 3 ;
-        if(info.IsSell.equals("3")) type = 6 ;
-        if(info.IsSell.equals("5")) type = 5 ;
+        int type = 0;
+        if (info.IsSell.equals("0")) type = 1;
+        if (info.IsSell.equals("1")) type = 4;
+        if (info.IsSell.equals("2") || info.IsSell.equals("4")) type = 3;
+        if (info.IsSell.equals("3")) type = 6;
+        if (info.IsSell.equals("5")) type = 5;
         final int finalType = type;
         tv.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(mSaleControlPW == null){
+                if (mSaleControlPW == null) {
                     mSaleControlPW = new SaleControlPW(SaleAty.this);
                     mSaleControlPW.setOnDismissListener(new PopupWindow.OnDismissListener() {
                         @Override
@@ -418,21 +482,21 @@ public class SaleAty extends KJActivity {
                             }
                         }
                     });
-                  
+
                 }
                 mSaleControlPW.setHouseMessage(info);
-                if(info.IsSell.equals("1")){
+                if (info.IsSell.equals("1")) {
                     HttpBusiness.getHouseDetails(info.NewsHouseID, "1", new SaleHttpBusiness());
-                }else if(info.IsSell.equals("2")){
+                } else if (info.IsSell.equals("2")) {
                     HttpBusiness.getHouseDetails(info.NewsHouseID, "2", new SaleHttpBusiness());
-                }else if(info.IsSell.equals("3")){
-   //                 HttpBusiness.getHouseOthersDetails(info.NewsHouseID, "3", new SaleHttpBusiness());
-                }else if(info.IsSell.equals("5")){
+                } else if (info.IsSell.equals("3")) {
+                    //                 HttpBusiness.getHouseOthersDetails(info.NewsHouseID, "3", new SaleHttpBusiness());
+                } else if (info.IsSell.equals("5")) {
                     HttpBusiness.getHouseOthersDetails(info.NewsHouseID, "5", new SaleHttpBusiness());
                 }
                 int type2 = finalType;
-                if(GlobalVarible.ROLE_ID.equals(CommomKey.ROLE_TYPE_PROPERTY)||GlobalVarible.ROLE_ID.equals(CommomKey.ROLE_TYPE_MANAGER)){
-                    if(type2 ==1||type2 ==6){
+                if (GlobalVarible.ROLE_ID.equals(CommomKey.ROLE_TYPE_PROPERTY) || GlobalVarible.ROLE_ID.equals(CommomKey.ROLE_TYPE_MANAGER)) {
+                    if (type2 == 1 || type2 == 6) {
                         type2 = 7;
                     }
                 }
@@ -445,23 +509,22 @@ public class SaleAty extends KJActivity {
         tv.setLayoutParams(tvParams);
         return tv;
     }
-    
-    private void dealHouseList() {
-    	if(!houseList.isEmpty()) {
-    		clList.clear();
-    		Iterator<Entry<BuildingUnitInfo,  List<HouseInfo>>> it = houseList.entrySet().iterator();
-    		while(it.hasNext()) {
-    			Entry<BuildingUnitInfo, List<HouseInfo>> entry = it.next();
-    			BuildingUnitInfo key = entry.getKey();
-    			if(buildinfo.Dan.equals(key.Dan) && (buildinfo.Dong).equals(key.Dong)) {
-    				 List<HouseInfo> value = entry.getValue();    				
-    				 showldView(value);
-    				 break;
-    			}
-    		}
-     	}
-    }
-    
 
-    
+    private void dealHouseList() {
+        if (!houseList.isEmpty()) {
+            clList.clear();
+            Iterator<Entry<BuildingUnitInfo, List<HouseInfo>>> it = houseList.entrySet().iterator();
+            while (it.hasNext()) {
+                Entry<BuildingUnitInfo, List<HouseInfo>> entry = it.next();
+                BuildingUnitInfo key = entry.getKey();
+                if (buildinfo.Dan.equals(key.Dan) && (buildinfo.Dong).equals(key.Dong)) {
+                    List<HouseInfo> value = entry.getValue();
+                    showldView(value);
+                    break;
+                }
+            }
+        }
+    }
+
+
 }

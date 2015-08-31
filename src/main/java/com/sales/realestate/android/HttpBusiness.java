@@ -25,6 +25,7 @@ public class HttpBusiness {
     public final static String RETURN_MESSAGE_TOKEN = "1006";
     public final static String RETURN_MESSAGE_DOAGAIN = "1007";
     public final static String RETURN_MESSAGE_LASTVERSION = "1009";
+    public final static String RETURN_MESSAGE_STOP = "1012";
 
     public final static int HTTP_KEY_LOGIN = 110;
     public final static int HTTP_KEY_BUILDING = 111;
@@ -472,6 +473,16 @@ public class HttpBusiness {
                         AppContext.getCurrentActivity().skipActivity(AppContext.getCurrentActivity(), LoginAty.class);
                         return;
                     }
+                    if (RETURN_MESSAGE_STOP.equals(mJsonInfo.returnCode)) {
+                        errorNo = RETURN_MESSAGE_TOKEN;
+                        isError = true;
+                        errorMessage = mJsonInfo.Msg;
+                        AppContext.getCurrentActivity().toast("该帐号已经停用,请重新登录");
+                        AppInit.loginOutUserInfo();
+                        AppContext.getCurrentActivity().skipActivity(AppContext.getCurrentActivity(), LoginAty.class);
+                        return;
+                    }
+
                     if (StringUtils.isEmpty(mJsonInfo.MessageCode)) {
                         isError = true;
                         errorMessage = mJsonInfo.Message;

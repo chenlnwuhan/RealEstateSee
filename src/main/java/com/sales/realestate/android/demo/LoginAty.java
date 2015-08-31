@@ -9,6 +9,7 @@ import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -23,6 +24,7 @@ import com.sales.realestate.android.R;
 import com.sales.realestate.android.bean.UserInfo;
 import com.sales.realestate.android.utils.AppInit;
 import com.sales.realestate.android.utils.AppUtils;
+import com.sales.realestate.android.utils.ScreenUtils;
 
 import org.kymjs.kjframe.KJActivity;
 import org.kymjs.kjframe.ui.BindView;
@@ -70,6 +72,8 @@ public class LoginAty extends KJActivity {
     public String loginId = "";
     public String errorLoginId = "";
     public boolean isFinish;
+
+    public  int lastHeight = 0 ;
 
 
     private class FinishRefresh extends AsyncTask<Void, Void, Void> {
@@ -142,7 +146,7 @@ public class LoginAty extends KJActivity {
                         AppContext.getCurrentActivity().toast("消息推送绑定失败！");
                     } else {
                         try {
-                            //               AppContext.getCurrentActivity().toast("消息推送绑定成功！");
+ //                           AppContext.getCurrentActivity().toast("消息推送绑定成功！");
                             AppInit.baidubindstore("1");
                             isFinish = true;
                             skipActivity(LoginAty.this, MainActivity.class);
@@ -281,8 +285,6 @@ public class LoginAty extends KJActivity {
                     inputMethodManager.hideSoftInputFromWindow(v.getApplicationWindowToken(), 0);
                 }
 
-                toast("1111");
-
                 return true;
             }
             return false;
@@ -290,27 +292,32 @@ public class LoginAty extends KJActivity {
     };
     @Override
     public void initWidget() {
-//        editTextLoginName.setOnKeyListener(onKeyListener);
-        /*
+
         linearlayout_all.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
 
             @Override
             public void onGlobalLayout(){
-
-                //比较Activity根布局与当前布局的大小
-                InputMethodManager inputMethodManager = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                if(inputMethodManager.isActive()){
-                    toast("gogogo");
-                }
                 int heightDiff = linearlayout_all.getRootView().getHeight()- linearlayout_all.getHeight();
-                if(heightDiff >100){
-                    toast(heightDiff+"");
+                int[] viewLocation = new int[2];
+                buttonLogin.getLocationOnScreen(viewLocation);
+                KJLoger.debug(viewLocation[1] + ":yyyyyy");
+                KJLoger.debug(heightDiff+":heightDiff");
+                if(heightDiff==lastHeight){
+                    return ;
+                }
+                lastHeight = heightDiff;
+                if(heightDiff >(100*(ScreenUtils.getScreenHeight(LoginAty.this)/720))){
+                    FrameLayout.LayoutParams mLayoutParams = (FrameLayout.LayoutParams) linearlayout_all.getLayoutParams();
+                    mLayoutParams.setMargins(0, (int) -(LoginAty.this.getResources().getDimension(R.dimen.login_height)), 0, 0);
+                    linearlayout_all.setLayoutParams(mLayoutParams);
                 }else{
-                    toast(heightDiff+"");
+                    FrameLayout.LayoutParams mLayoutParams = (FrameLayout.LayoutParams) linearlayout_all.getLayoutParams();
+                    mLayoutParams.setMargins(0, 0, 0, 0);
+                    linearlayout_all.setLayoutParams(mLayoutParams);
                 }
             }
         });
-        */
+
         super.initWidget();
         linearLayoutVerifycode.setVisibility(View.GONE);
         isVerification = false;
@@ -350,7 +357,6 @@ public class LoginAty extends KJActivity {
     @Override
     protected void onStart() {
         super.onStart();
-
         if (GlobalVarible.IS_LOGIN) {
             this.showActivity(this, MainActivity.class);
         }

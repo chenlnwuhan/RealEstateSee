@@ -39,11 +39,13 @@
         <activity
             android:name="com.sales.realestate.android.demo.LoginAty"
             android:launchMode="singleTask"
+            android:windowSoftInputMode="stateVisible|adjustResize"
             android:screenOrientation="portrait"/>
 
         <activity
             android:name="com.sales.realestate.android.demo.LoginAty2"
             android:launchMode="singleTask"
+            android:windowSoftInputMode="stateVisible|adjustResize"
             android:screenOrientation="portrait"/>
 
         <activity

@@ -1,5 +1,7 @@
 package com.sales.realestate.android.bean;
 
+import java.util.ArrayList;
+
 /**
  * Created by cc on 2015/8/2.
  * {"NewsHouseID": 1,"RoomName": "101室","Dong": 1,"Dan": 1},{"NewsHouseID": 2,"RoomName": "102室","Dong": 1,"Dan": 1}
@@ -20,6 +22,21 @@ public class HouseInfo {
     public String IsSell ;
     public String HuXingName;
     public String Acreage;
+    public String ParentID = "0";
+    public int  realLouIndex = 0;
+    public int subLouIndex = 0 ;
+    public ArrayList<HouseInfo> subList =  new ArrayList<HouseInfo>();
+    /**
+     * 1 正常房间
+     * 2 拆分
+     * 3 横向合并
+     * 4 竖向合并
+     */
+    public String houseType = "1";
+    /**
+     * 1 拆分或者合并的数量
+     */
+    public String number ="1";
     public int buyType;
     public int compareTo(HouseInfo arg0) {
         return this.RoomName.compareTo(arg0.RoomName);

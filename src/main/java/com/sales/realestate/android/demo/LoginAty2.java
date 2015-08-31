@@ -5,6 +5,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
+import android.view.ViewTreeObserver;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
 import android.widget.EditText;
@@ -289,8 +290,9 @@ public class LoginAty2 extends KJActivity {
     };
     @Override
     public void initWidget() {
+ //       linearlayout_all
 //        editTextLoginName.setOnKeyListener(onKeyListener);
-        /*
+
         linearlayout_all.getViewTreeObserver().addOnGlobalLayoutListener(new ViewTreeObserver.OnGlobalLayoutListener(){
 
             @Override
@@ -309,7 +311,7 @@ public class LoginAty2 extends KJActivity {
                 }
             }
         });
-        */
+
         super.initWidget();
         linearLayoutVerifycode.setVisibility(View.GONE);
         isVerification = false;

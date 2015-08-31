@@ -185,7 +185,7 @@ public class ConfirmCustomBuyAty extends KJActivity {
         textview_confirm_building.setText(mCustomerSeeInfo.RoomName);
         textview_confirm_time.setText(mCustomerSeeInfo.SetTime);
         textview_confirm_propertyconsultant.setText(mCustomerSeeInfo.ConsultantName);
-        if(mCustomerSeeInfo.IsLook.equals("1")){
+        if(mCustomerSeeInfo.IsSet.equals("1")){
             textview_shenhei_result.setText("有效");
         }else{
             textview_shenhei_result.setText("无效");

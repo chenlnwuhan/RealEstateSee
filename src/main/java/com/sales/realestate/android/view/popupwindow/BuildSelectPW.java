@@ -332,7 +332,7 @@ public class BuildSelectPW extends PopupWindow {
         ArrayList<SpinnerItemInfo> t = new ArrayList<SpinnerItemInfo>();
         for(int i=0;i < mHouseList.size(); i++){
             if((dong.equals(mHouseList.get(i).Dong))&&(dan.equals(mHouseList.get(i).Dan))&&(Ceng.equals(mHouseList.get(i).Ceng))){
-                if(mHouseList.get(i).IsSell.equals("0")){
+                if(mHouseList.get(i).IsSell.equals("0")|mHouseList.get(i).IsSell.equals("2")){
                     SpinnerItemInfo mHouse = new SpinnerItemInfo();
                     mHouse.id = mHouseList.get(i).NewsHouseID;
                     mHouse.name = mHouseList.get(i).RoomName;
